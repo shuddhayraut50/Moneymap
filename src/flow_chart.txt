@@ -1,0 +1,44 @@
+MoneyMap Project - High-Level Flow Chart
+========================================
+
+1. User Interface (Frontend)
+---------------------------
+- main code/investment.html
+  |-- links to --> investment.js (main logic)
+  |-- links to --> investmentselection.js (auto allocation, imports data/*)
+  |-- links to --> invetmentselctionManual.js (manual allocation, imports data/*)
+  |-- links to --> selection.js, payment.js, dashboard.js, etc.
+  |-- links to --> investment.css (styling)
+
+2. Data Modules (Frontend)
+--------------------------
+- main code/data/stocks.js
+- main code/data/crypto.js
+- main code/data/etfs.js
+- main code/data/mutualFunds.js
+- main code/data/reits.js
+  |-- All fetch data from --> server.js API endpoints
+
+3. Backend (API Server)
+-----------------------
+- server.js
+  |-- Serves API endpoints for asset values (stocks, crypto, etfs, mutualfunds, reits)
+  |-- Reads/writes JSON files: stocks.json, crypto.json, etfs.json, mutualFunds.json, reits.json, history.json
+
+4. Data Storage (Backend)
+-------------------------
+- stocks.json, crypto.json, etfs.json, mutualFunds.json, reits.json (asset data)
+- history.json (historical values)
+
+5. Other Pages/Modules
+----------------------
+- complted/, user/, Sell Assets/, Financial Portfolio/, experiment/ (other HTML/CSS/JS for different features)
+
+
+[Simple Data Flow]
+------------------
+User (investment.html) --> investment.js (logic/UI) --> investmentselection.js / invetmentselctionManual.js (allocation) --> data/*.js (fetch asset data) --> server.js (API) --> JSON files (data)
+
+[Other pages] (home.html, payment.html, etc.) follow similar structure: HTML --> JS --> server.js (if data needed)
+
+// End of high-level flow chart 

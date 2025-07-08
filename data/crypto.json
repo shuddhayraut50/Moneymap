@@ -1,0 +1,22 @@
+{
+  "Bitcoin (BTC)": {
+    "original": 6662300.45,
+    "updated": 9352413.2
+  },
+  "Ethereum (ETH)": {
+    "original": 126802.03,
+    "updated": 152264.78
+  },
+  "Binance Coin (BNB)": {
+    "original": 47694.35,
+    "updated": 72023.89
+  },
+  "Solana (SOL)": {
+    "original": 9149.64,
+    "updated": 13896.39
+  },
+  "Dogecoin (DOGE)": {
+    "original": 12.56,
+    "updated": 19
+  }
+}

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+    <link rel="icon" type="image/x-icon" href="../assets/logo.svg">
+    <link rel="stylesheet" href="wallet.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+            <div class="header-left">
+                <svg class="wallet-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18 4H6c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h12c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2m0 2v2H6V6h12m0 12H6v-6h12v6Z"></path></svg>
+                <div>
+                    <h1>My Wallet</h1>
+                    <p>Manage your funds and track your earnings</p>
+                    <span id="current-user-info" style="font-size:14px;color:#1890ff;font-weight:500;"></span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="tab-btn active">Overview</button>
+                <button class="tab-btn">Transactions</button>
+                <button id="wallet-login-btn" class="tab-btn" style="margin-left:16px;"></button>
+            </div>
+        </header>
+
+        <div class="wallet-dashboard">
+            <!-- New Wallet Overview Cards -->
+            <div class="card total-wallet-balance-card">
+                <span class="card-amount">₹0</span>
+                <span class="card-label"><span class="card-emoji">💼</span> Total Wallet Balance</span>
+                <span class="card-info">Total money in the app, including investments and available cash.</span>
+            </div>
+            <div class="card investment-current-value-card">
+                <span class="card-amount">₹0</span>
+                <span class="card-label"><span class="card-emoji">📊</span> Investment Current Value</span>
+                <span class="card-info">Current worth of your active investments.</span>
+            </div>
+            <div class="card wallet-balance-card">
+                <span class="card-amount">₹0</span>
+                <span class="card-label"><span class="card-emoji">💳</span> Wallet Balance</span>
+                <span class="card-info">Money available to use or withdraw now.</span>
+            </div>
+            <div class="card total-investment-card">
+                <span class="card-amount">₹0</span>
+                <span class="card-label"><span class="card-emoji">🧾</span> Total Investment</span>
+                <span class="card-info">Total original amount you have invested.</span>
+            </div>
+            <div class="card profit-earned-card">
+                <span class="card-amount">₹0</span>
+                <span class="card-label"><span class="card-emoji">📈</span> Profit Earned</span>
+                <span class="card-info">Current profit/loss on your active investments.</span>
+            </div>
+            <div class="card pending-returns-card">
+                <span class="card-amount">₹0</span>
+                <span class="card-label"><span class="card-emoji">⏳</span> Pending Returns</span>
+                <span class="card-info">Profit that is still processing from investments.</span>
+            </div>
+        </div>
+
+        <div class="action-buttons-container">
+            <button class="btn add-funds">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2Z"></path></svg>
+                Add Funds
+            </button>
+            <button class="btn withdraw-funds">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13H5v-2h14v2Z"></path></svg>
+                Withdraw Funds
+            </button>
+        </div>
+
+        <!-- Payment Methods Section -->
+        <div class="card payment-methods-card">
+            <h2>Payment Methods</h2>
+            <div class="payment-method-item">
+                <div class="method-details">
+                    <input type="radio" id="upi" name="payment_method" checked>
+                    <label for="upi">UPI ID</label>
+                    <span>user@paytm</span>
+                </div>
+                <span class="status active">Active</span>
+            </div>
+            <div class="payment-method-item">
+                <div class="method-details">
+                    <input type="radio" id="hdfc" name="payment_method">
+                    <label for="hdfc">HDFC Bank</label>
+                    <span>****1234</span>
+                </div>
+                <span class="status linked">Linked</span>
+            </div>
+            <button class="btn manage-methods-btn">Manage Payment Methods</button>
+        </div>
+
+        <!-- Important Notes Section -->
+        <div class="card important-notes-card">
+            <h2>Important Notes</h2>
+            <ul>
+                <li>Withdrawals take 1-2 business days to reflect in your bank account</li>
+                <li>Pending returns are automatically credited to your wallet</li>
+                <li>All transactions are secured with bank-grade encryption</li>
+            </ul>
+        </div>
+
+        <!-- Transaction History (will be updated later to match image) -->
+        <div class="transaction-history card">
+            <div class="transaction-history-header">
+                <h2>Transaction History</h2>
+                <div class="history-actions">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search transactions..." class="search-input">
+                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="m15.5 14.5-5.5-5.5 1-1 5.5 5.5-1 1Zm-5.5 1c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5Zm0-12C6.22 3.5 3.5 6.22 3.5 9.5S6.22 15.5 9.5 15.5 15.5 12.78 15.5 9.5 12.78 3.5 9.5 3.5Zm12 17-3.66-3.66-1.41 1.41 3.66 3.66 1.41-1.41Z"></path></svg>
+                        <button class="clear-search-btn" title="Clear search">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+                        </button>
+                    </div>
+                    <div class="filter-dropdown">
+                        <button class="filter-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10 18h4v-2h-4v2ZM3 6v2h18V6H3Zm3 7h12v-2H6v2Z"></path></svg>
+                            <span>All Types</span>
+                            <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="m7 10 5 5 5-5H7Z"></path></svg>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#" data-filter="All Types">All Types</a>
+                            <a href="#" data-filter="Deposit">Deposit</a>
+                            <a href="#" data-filter="Withdrawal">Withdrawal</a>
+                        </div>
+                    </div>
+                    <button class="export-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11 16H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7h-2V6H5v8h6v2Zm4 4-4-4 1.41-1.41L14 16.17V11h2v5.17l1.59-1.58L19 16l-4 4Z"></path></svg>
+                        Export
+                    </button>
+                </div>
+            </div>
+            <div class="transactions-list">
+                <!-- Transactions will be added here dynamically as a table -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Funds Modal -->
+    <div class="modal" id="addFundsModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add Funds to Wallet</h2>
+            <div class="form-group amount-input-group">
+                <label for="addAmount">Enter Amount</label>
+                <div class="input-with-prefix">
+                    <span class="currency-prefix">₹</span>
+                    <input type="number" id="addAmount" placeholder="0" min="100">
+                </div>
+                <span class="min-max-label">Minimum amount: ₹100</span>
+            </div>
+            <div class="quick-select">
+                <button class="quick-amount-btn" data-amount="1000">₹1,000</button>
+                <button class="quick-amount-btn" data-amount="5000">₹5,000</button>
+                <button class="quick-amount-btn" data-amount="10000">₹10,000</button>
+                <button class="quick-amount-btn" data-amount="25000">₹25,000</button>
+            </div>
+            <div class="payment-method-selection">
+                <h3>Payment Method</h3>
+                <div class="method-option">
+                    <input type="radio" id="upiPayment" name="addPaymentMethod" checked>
+                    <label for="upiPayment">UPI Payment</label>
+                    <p class="method-desc">Pay from any linked UPI app</p>
+                </div>
+                <div class="method-option">
+                    <input type="radio" id="debitCredit" name="addPaymentMethod">
+                    <label for="debitCredit">Debit/Credit Card</label>
+                    <p class="method-desc">Securely add payment</p>
+                </div>
+            </div>
+            <div class="important-info-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 13c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1s1 .45 1 1v4c0 .55-.45 1-1 1Zm1-8h-2V7h2v2Z"></path></svg>
+                Secure Transaction
+                <p>Your transactions are protected by bank-grade security. Funds will be added instantly to your wallet.</p>
+            </div>
+            <div class="modal-actions">
+                <button class="btn cancel-btn">Cancel</button>
+                <button class="btn submit-add">Add ₹0</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Withdraw Funds Modal -->
+    <div class="modal" id="withdrawFundsModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Withdraw Funds</h2>
+            <div class="available-balance-info">
+                <span class="label">Available for withdrawal</span>
+                <span class="amount"></span>
+            </div>
+            <div class="form-group amount-input-group">
+                <label for="withdrawAmount">Enter Amount</label>
+                <div class="input-with-prefix">
+                    <span class="currency-prefix">₹</span>
+                    <input type="number" id="withdrawAmount" placeholder="0" min="1">
+                </div>
+                <span class="min-max-label">Minimum: ₹100 • Maximum: ₹15,000</span>
+            </div>
+            <div class="quick-select">
+                <button class="quick-amount-btn" data-amount="1000">₹1,000</button>
+                <button class="quick-amount-btn" data-amount="5000">₹5,000</button>
+                <button class="quick-amount-btn" data-amount="10000">₹10,000</button>
+                <button class="quick-amount-btn" data-amount="15000">Max ₹15,000</button>
+            </div>
+            <div class="bank-details">
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M3 10.5v8.5h18v-8.5l-9-5.25-9 5.25Zm0 2.25 9 5.25 9-5.25V19H3v-6.25ZM12 4.25l7.5 4.375-7.5 4.375-7.5-4.375L12 4.25Z"></path></svg> -->
+                HDFC Bank
+                <span>Account ending with ****1234</span>
+            </div>
+            <div class="important-info-box warning">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21Zm12-3h-2v-2h2v2Zm0-4h-2v-4h2v4Z"></path></svg>
+                Important Information
+                <ul>
+                    <li>Withdrawals take 1-2 business days to process</li>
+                    <li>You cannot cancel the withdrawal once initiated</li>
+                    <li>Funds will be transferred to your linked bank account</li>
+                </ul>
+            </div>
+            <div class="modal-actions">
+                <button class="btn cancel-btn">Cancel</button>
+                <button class="btn submit-withdraw">Withdraw ₹0</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../completed/auth.js"></script>
+    <script src="wallet.js"></script>
+    <script>
+    // Wallet login/logout logic using simplified auth system
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginBtn = document.getElementById('wallet-login-btn');
+        if (!loginBtn) return;
+        
+        const currentUser = localStorage.getItem('currentUser');
+        if (currentUser) {
+            loginBtn.textContent = 'Logout';
+            loginBtn.onclick = function(e) {
+                e.preventDefault();
+                if (document.getElementById('logout-popup')) return;
+                const popup = document.createElement('div');
+                popup.id = 'logout-popup';
+                popup.innerHTML = `
+                    <div class="logout-modal-bg" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.3);z-index:9998;"></div>
+                    <div class="logout-modal" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;padding:32px 28px 24px 28px;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.18);z-index:9999;min-width:300px;text-align:center;">
+                        <h2 style='margin-bottom:18px;font-size:1.3em;color:#1a237e;'>Logout Confirmation</h2>
+                        <p style='margin-bottom:24px;color:#333;'>Are you sure you want to logout?</p>
+                        <button id="logout-yes" style="background:#1a237e;color:#fff;padding:8px 24px;border:none;border-radius:6px;margin-right:12px;cursor:pointer;font-size:1em;">Yes</button>
+                        <button id="logout-no" style="background:#fff;color:#1a237e;padding:8px 24px;border:1.5px solid #1a237e;border-radius:6px;cursor:pointer;font-size:1em;">No</button>
+                    </div>
+                `;
+                document.body.appendChild(popup);
+                document.getElementById('logout-yes').onclick = function() {
+                    localStorage.removeItem('currentUser');
+                    document.body.removeChild(popup);
+                    window.location.href = '../user/login.html';
+                };
+                document.getElementById('logout-no').onclick = function() {
+                    document.body.removeChild(popup);
+                };
+                popup.querySelector('.logout-modal-bg').onclick = function() {
+                    document.body.removeChild(popup);
+                };
+            };
+        } else {
+            loginBtn.textContent = 'Login';
+            loginBtn.onclick = function() {
+                window.location.href = '../user/login.html';
+            };
+        }
+    });
+    </script>
+</body>
+</html>

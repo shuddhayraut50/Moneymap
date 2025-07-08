@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+        }
+
+        .left-side {
+            flex: 1;
+        }
+
+        .right-side {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 30px 0 0 30px ;
+            background: linear-gradient(135deg, #202eca, #0d47a1);
+
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            width: 430px;
+            animation: fadeIn 1s ease-in-out;
+            height: 535px;
+        }
+
+        h1 {
+            color: #1a237e;
+            font-weight: 700;
+            margin-bottom: 20px;
+            top: 10px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 60px;
+        }
+
+        .welcome-text {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 25px;
+            line-height: 1.5;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.2em;
+        }
+
+        .welcome-text span {
+            color: #1a237e;
+            font-weight: 600;
+        }
+
+        .input-box {
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-bottom: 2px solid #1a237e;
+            outline: none;
+            background: transparent;
+            color: #333;
+            font-size: 16px;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .input-box label {
+            position: absolute;
+            left: 0;
+            bottom: 10px;
+            color: #141414;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .input-box input:focus + label,
+        .input-box input:valid + label {
+            bottom: 30px;
+            font-size: 14px;
+            color: #1a237e;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #141414;
+            font-size: 14px;
+            margin: 20px 0;
+            margin-top: 10px;
+        }
+
+        .remember-me div {
+            display: flex;
+            align-items: center;
+        }
+
+        .remember-me input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+            cursor: pointer;
+            accent-color: #1a237e;
+        }
+
+        .remember-me label {
+            cursor: pointer;
+            user-select: none;
+            margin-top: 0;
+        }
+
+        .forgot-pass {
+            color: #1a237e;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .forgot-pass:hover {
+            text-decoration: underline;
+
+        }
+
+        .signup {
+            background-color: white;
+            color: #1a237e;
+            cursor: pointer;
+            border: 2px solid #1a237e ;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: #1a237e;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background: #055bdb;
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .social-login {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+
+        }
+
+        .social-login button {
+            width: 90%;
+            background: #f8f9fa;
+            color: #1a237e;
+            border: 1px solid #e9ecef;
+        }
+
+        .social-login button:hover {
+            background: #e9ecef;
+            border-color: #1a237e;
+        }
+
+        .error {
+            color: #ff4444;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        .left-side img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .logo {
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transition: color 0.3s; /* Add transition for hover effect */
+    position: absolute;
+    left: 3%;
+    font-family: Arial, Helvetica, sans-serif;
+    
+    top: 4%;
+    color: #202eca;
+    
+}
+
+.logo:hover {
+    color: #00aaff; /* Change color on hover */
+}
+
+    </style>
+</head>
+<body>
+    <a href="./home.html"><div class="logo">MoneyMap</div></a>
+    <div class="left-side">
+        <img src="https://scx2.b-cdn.net/gfx/news/2019/3-robot.jpg" alt="">
+    </div>
+    <div class="right-side">
+        <div class="login-container">
+            <h1>Login</h1>
+            <form>
+                <div class="input-box">
+                    <input type="text" id="username" required>
+                    <label for="username">Username</label>
+                </div>
+                <div class="input-box">
+                    <input type="password" id="password" required>
+                    <label for="password">Password</label>
+                </div>
+                <div class="remember-me">
+                    <div>
+                        <input type="checkbox" id="remember">
+                        <label for="remember">Remember Me</label>
+                    </div>
+                    <a href="#" class="forgot-pass">Forgot Password?</a>
+                </div>
+                <button type="submit">Login</button>
+                <a href="./signup.html"><button type="button" class="signup">Sign Up</button></a>
+                <div class="social-login">
+                    <a href=""><button type="button">Login with Google</button></a>
+                    <a href="https://github.com/login"><button type="button">Login with GitHub</button></a>
+                </div>
+                <p class="error" id="error-message"></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="../completed/auth.js"></script>
+    <script>
+        // ====== Variable Declarations and State Management ======
+        const dbName = "MoneyMapDB";
+        const dbVersion = 4;
+        let db;
+        const appState = {
+            currentUser: null,
+            dbReady: false
+        };
+        // DOM references
+        const $loginForm = document.querySelector("form");
+        const $username = document.getElementById("username");
+        const $password = document.getElementById("password");
+        const $errorMessage = document.getElementById("error-message");
+        const $remember = document.getElementById("remember");
+
+        // ====== Session Check on Page Load ======
+        function checkSession() {
+            if (auth.isAuthenticated) {
+                window.location.href = "../completed/home.html?login=success";
+            }
+        }
+
+        // ====== Login Logic (MongoDB) ======
+        async function handleLogin(event) {
+            event.preventDefault();
+            $errorMessage.textContent = "";
+            const loginId = $username.value.trim();
+            const password = $password.value.trim();
+            if (!loginId || !password) {
+                $errorMessage.textContent = "Username/Email/Number and password are required.";
+                return false;
+            }
+            try {
+                const response = await fetch('http://localhost:3001/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ loginId, password })
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    // Use auth.js to handle login - only pass username
+                    const userData = {
+                        username: data.username || loginId
+                    };
+                    
+                    if (auth.login(userData)) {
+                        showSuccessMessage();
+                        setTimeout(() => {
+                            window.location.href = "../completed/home.html?login=success";
+                        }, 1200);
+                    } else {
+                        $errorMessage.textContent = "Failed to save login session.";
+                    }
+                } else {
+                    $errorMessage.textContent = data.message || "Login failed.";
+                }
+            } catch (err) {
+                $errorMessage.textContent = "Error during login. Please try again.";
+                console.error("Login error:", err);
+            }
+            return false;
+        }
+
+        // ====== Success Message ======
+        function showSuccessMessage() {
+            const body = document.body;
+            const successMessage = document.createElement('div');
+            successMessage.textContent = "Login successful!";
+            successMessage.style.position = "fixed";
+            successMessage.style.top = "50%";
+            successMessage.style.left = "50%";
+            successMessage.style.transform = "translate(-50%, -50%)";
+            successMessage.style.backgroundColor = "#1a237e";
+            successMessage.style.color = "white";
+            successMessage.style.padding = "20px 40px";
+            successMessage.style.borderRadius = "10px";
+            successMessage.style.fontSize = "20px";
+            successMessage.style.fontWeight = "bold";
+            successMessage.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+            successMessage.style.zIndex = "9999";
+            body.appendChild(successMessage);
+        }
+
+        // ====== Event Listeners and Initialization ======
+        document.addEventListener('DOMContentLoaded', async () => {
+            checkSession();
+            $loginForm.addEventListener('submit', handleLogin);
+            
+            // Check for signup success parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('signup') === 'success') {
+                $errorMessage.textContent = "Account created successfully! Please login.";
+                $errorMessage.style.color = "#00C851";
+                // Clean up URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        });
+    </script>
+</body>
+</html>

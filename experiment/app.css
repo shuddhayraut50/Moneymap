@@ -1,0 +1,89 @@
+/* App.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: #f4f7fc;
+  color: #333;
+}
+
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #1f3c72;
+}
+
+.header p {
+  font-size: 16px;
+  color: #6e7b89;
+}
+
+.main-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: linear-gradient(to right, #3e8ed0, #8a4ff2);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 30%;
+  text-align: center;
+}
+
+.stat-card h2 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.stat-card p {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.percentage {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.additional-info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.info-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.info-card p {
+  font-size: 16px;
+  color: #6e7b89;
+}
+
+.info-card strong {
+  font-size: 18px;
+  color: #333;
+}

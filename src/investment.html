@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investment Table</title>
+  <link rel="stylesheet" href="investment.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div class="kali">
+    <a href="./home.html">
+      <h1 class="logo">MoneyMap - Investment Plan</h1>
+    </a>
+
+    <!-- User Input Form -->
+    <form class="inputbox" id="userInputForm">
+      <div class="input-section invest">
+        <label>Investment Type:</label>
+        <button type="button" class="select-btn " data-type="investment"
+          onclick="setInvestmentType(this, 'One-time')">One-Time</button>
+      </div>
+
+      <div class="input-section">
+        <label>Risk Appetite:</label>
+        <button type="button" class="select-btn" data-type="risk" onclick="setRiskLevel(this, 'Low')">Low</button>
+        <button type="button" class="select-btn" data-type="risk" onclick="setRiskLevel(this, 'Medium')">Medium</button>
+        <button type="button" class="select-btn" data-type="risk" onclick="setRiskLevel(this, 'High')">High</button>
+        <button type="button" class="select-btn" data-type="risk" onclick="setRiskLevel(this, 'RiskFree')">Risk
+          Free</button>
+
+      </div>
+
+      <div class="input-section">
+        <label>Investment Duration:</label>
+        <button type="button" class="select-btn" data-type="duration" onclick="setInvestmentDuration(this, 1)">1
+          Year</button>
+        <button type="button" class="select-btn" data-type="duration" onclick="setInvestmentDuration(this, 2)">2
+          Years</button>
+        <button type="button" class="select-btn" data-type="duration" onclick="setInvestmentDuration(this, 3)">3
+          Years</button>
+        <button type="button" class="select-btn" data-type="duration" onclick="setCustomDuration(this)">Custom</button>
+        <input type="number" id="customDuration" name="customDuration" style="display: none;" min="1"
+          placeholder="Enter number of years">
+      </div>
+
+      <label for="investmentAmount">Investment Amount:</label>
+      <input type="number" id="investmentAmount" name="investmentAmount" required min="1" placeholder="Enter amount">
+
+      <div class="input-section ef">
+        <label>Do you have an Emergency Fund?</label>
+        <button type="button" class="select-btn" data-type="emergency"
+          onclick="setEmergencyFund(this, true)">Yes</button>
+        <button type="button" class="select-btn" data-type="emergency"
+          onclick="setEmergencyFund(this, false)">No</button>
+      </div>
+
+      <label for="inflationRate">Expected Inflation Rate (%):</label>
+      <input type="number" id="inflationRate" name="inflationRate" required min="0" step="0.1" value="1"
+        placeholder="Enter inflation rate">
+
+      <!-- Submit Button -->
+      <button id="submitButton" type="button" onclick="validateInputsAndSubmit()">Submit</button>
+    </form>
+
+    <!-- Investment Allocation Section -->
+    <div id="investmentAllocationSection" class="container">
+      <h2>Investment Allocation</h2>
+      <div id="allocation-table"></div>
+      <div id="investment-options">
+        <h3>Investment Options</h3>
+        <div id="available-options">
+          <button class="option-btn" onclick="addOptionToTable('REITS')">REITS</button>
+          <button class="option-btn" onclick="addOptionToTable('SGB')">SGB</button>
+          <button class="option-btn" onclick="addOptionToTable('PPF')">PPF</button>
+          <button class="option-btn" onclick="addOptionToTable('NSC')">NSC</button>
+          <!-- <button class="option-btn" onclick="addOptionToTable('NPS')">NPS</button> -->
+          <button class="option-btn" onclick="addOptionToTable('Crypto')">Crypto</button>
+        </div>
+      </div>
+      <div class="chart-container">
+        <canvas id="investmentChart"></canvas>
+      </div>
+      <div class="chart-buttons">
+        <button id="autoSelectionButton" onclick="showAutoAllocation()">Auto Selection</button>
+        <button id="manualSelectionButton" onclick="showManualAllocation()">Manual Select</button>
+      </div>
+
+      <!-- Add these two divs for allocation results -->
+      <div id="autoAllocationSection" style="display:none"></div>
+      <div id="manualAllocationSection" style="display:none;">
+        <!-- Manual allocation results will be rendered here -->
+        <div class="calculator_container">
+          <h1>Stock Investment Calculator</h1>
+          <div class="manual-options" id="manualOptions">
+            <h3>🔧 Allocate Your Stocks</h3>
+            <div class="bulk-buttons">
+              <button class="all-one-btn" id="allOneBtn">+1 Each (Cost: ₹<span id="cost1">0</span>)</button>
+              <button class="all-one-btn" id="allTenBtn">+10 Each (Cost: ₹<span id="cost10">0</span>)</button>
+              <button class="all-one-btn" id="allHundredBtn">+100 Each (Cost: ₹<span id="cost100">0</span>)</button>
+            </div>            <div id="stockSelectors"></div>
+
+            <div class="remaining" id="manualRemaining"></div>
+            <div style="text-align: center; margin-top: 20px;">
+              <button id="doneBtn" class="action-btn all-one-btn">✅ Done</button>
+            </div>
+          </div>
+
+          <div class="result" id="result_box" style="display:none;">
+            <h3 id="portfolioTitle"></h3>
+            <div class="portfolio-grid" id="portfolioGrid"></div>
+            <div class="total-investment" id="portfolioTotals"></div>
+            <div class="edit-controls">
+              <button id="editQuantitiesBtn" class="action-btn">✏️ Edit Quantities</button>
+              <button id="confirmManualAllocationBtn" class="action-btn all-one-btn">✅ OK</button>
+            </div>
+          </div>
+
+          <!-- Modal -->
+          <div class="modal-overlay" id="modalOverlay">
+            <div class="modal">
+              <p id="modalMessage"></p>
+              <button id="modalOkBtn">OK</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- its for manual  -->
+        <div class="calculator_container">
+          <h1>Mutual Fund Investment Calculator</h1>
+          <div class="manual-options" id="manualMFOptions">
+            <h3>🔧 Allocate Your Mutual Funds</h3>            <div class="mf-bulk-buttons"></div>
+            <div id="mfSelectors"></div>
+            <div class="remaining" id="manualMFRemaining"></div>
+            <div style="text-align: center; margin-top: 20px;">
+              <button id="mfDoneBtn" class="action-btn all-one-btn">✅ Done</button>
+            </div>
+          </div>
+          <div class="result" id="mf_result_box" style="display:none;">
+            <h3 id="mfPortfolioTitle"></h3>
+            <div class="portfolio-grid" id="mfPortfolioGrid"></div>
+            <div class="total-investment" id="mfPortfolioTotals"></div>
+            <div class="edit-controls">
+              <button id="editMFQuantitiesBtn" class="action-btn">✏️ Edit Quantities</button>
+              <button id="confirmManualMFAllocationBtn" class="action-btn all-one-btn">✅ OK</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gold ETF Investment Calculator -->
+        <div class="calculator_container">
+          <h1>Gold ETF Investment Calculator</h1>
+          <div class="manual-options" id="manualETFOptions">
+            <h3>🔧 Allocate Your Gold ETFs</h3>
+            <div class="etf-bulk-buttons"></div>
+            <div id="etfSelectors"></div>
+            <div class="remaining" id="manualETFRemaining"></div>
+            <div style="text-align: center; margin-top: 20px;">
+              <button id="etfDoneBtn" class="action-btn all-one-btn">✅ Done</button>
+            </div>
+          </div>
+          <div class="result" id="etf_result_box" style="display:none;">
+            <h3 id="etfPortfolioTitle"></h3>
+            <div class="portfolio-grid" id="etfPortfolioGrid"></div>
+            <div class="total-investment" id="etfPortfolioTotals"></div>
+            <div class="edit-controls">
+              <button id="editETFQuantitiesBtn" class="action-btn">✏️ Edit Quantities</button>
+              <button id="confirmManualETFAllocationBtn" class="action-btn all-one-btn">✅ OK</button>
+            </div>
+          </div>
+        </div>
+        <div id="reitOptions" style="display:none;">
+          <div id="reitSelectors"></div>
+        </div>
+        <div id="reit_result_box" style="display:none;">
+          <h4 id="reitPortfolioTitle"></h4>
+          <div id="reitPortfolioGrid"></div>
+          <div id="reitPortfolioTotals"></div>
+          <button id="editREITQuantitiesBtn">Edit</button>
+          <button id="confirmManualREITAllocationBtn">OK</button>
+        </div>
+
+        <!-- crypto Investment Calculator -->
+        <div id="cryptoOptions" style="display:none;">
+          <div id="cryptoSelectors"></div>
+        </div>
+        <div id="crypto_result_box" style="display:none;">
+          <h4 id="cryptoPortfolioTitle"></h4>
+          <div id="cryptoPortfolioGrid"></div>
+          <div id="cryptoPortfolioTotals"></div>
+        </div>
+        <div id="fdOptions" style="display:none;"></div>
+        <div id="fd_result_box" style="display:none;">
+          <h4 id="fdPortfolioTitle"></h4>
+          <div id="fdPortfolioGrid"></div>
+          <div id="fdPortfolioTotals"></div>
+          <button id="editFDQuantitiesBtn">Edit</button>
+          <button id="confirmManualFDAllocationBtn">OK</button>
+        </div>
+        
+      
+      <div class="manual-progress-container" style="margin-top: 10px; margin-bottom: 30px; display: flex; align-items: center; justify-content: center;">
+        <svg width="80" height="80" viewBox="0 0 80 80">
+          <circle cx="40" cy="40" r="34" stroke="#e0e0e0" stroke-width="8" fill="none" />
+          <circle id="manualProgressBar" cx="40" cy="40" r="34" stroke="#7F00FF" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="213.628" stroke-dashoffset="213.628" style="transition: stroke-dashoffset 0.5s;"/>
+        </svg>
+        <span id="manualProgressText" class="manual-progress-text">0/0</span>
+      </div>
+      <button id="manualSelectionDoneBtn" class="manual-selection-done-btn" >manual selection done</button>
+      </div>
+      <div class="container" id="whatToExpectContainer" style="display:block;">
+        <h1>What to Expect From Your Investments</h1>
+
+        <!-- Summary Block -->
+        <div class="summary">
+          <h2>Overall Summary</h2>
+          <div class="summary-values">
+            <div class="summary-item">
+              💰 Total Invested:
+              <span></span>
+            </div>
+            <div class="summary-item">
+              📈 Expected Return:
+              <span></span>
+            </div>
+            <div class="summary-item">
+              ✅ Total Profit:
+              <span class="profit"></span>
+            </div>
+            <div class="summary-item">
+              💸 Tax Estimation:
+              <span class="tax"></span>
+            </div>
+            <div class="summary-item">
+              🎯 Final After Tax:
+              <span class="final"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Investment Cards -->
+        <div class="cards">
+
+
+          <div class="card" id="cardMutualFunds" style="display:none;">
+            <div class="card-title">Mutual Funds</div>
+            <div class="info-row">
+              <div class="info-label"><span>💰</span>Invested:</div>
+              <div class="info-value" id="mfInvested"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>📈</span>Expected Return:</div>
+              <div class="info-value" id="mfExpectedReturn"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>🔻</span>Worst Case:</div>
+              <div class="info-value" id="mfWorstCase"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>🚀</span>Best Case:</div>
+              <div class="info-value" id="mfBestCase"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>✅</span>Profit:</div>
+              <div class="info-value" id="mfProfit"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>💸</span>Tax:</div>
+              <div class="info-value" id="mfTax"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>🎯</span>Final:</div>
+              <div class="info-value" id="mfFinal"></div>
+            </div>
+            <!-- Add more info-rows as needed -->
+          </div>
+          <div class="card" id="cardStocks" style="display:none;">
+            <div class="card-title">Stocks</div>
+            <div class="info-row">
+              <div class="info-label"><span>💰</span>Invested:</div>
+              <div class="info-value" id="stocksInvested"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>📈</span>Expected Return:</div>
+              <div class="info-value" id="stocksExpectedReturn"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>🔻</span>Worst Case:</div>
+              <div class="info-value" id="stocksWorstCase"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>🚀</span>Best Case:</div>
+              <div class="info-value" id="stocksBestCase"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>✅</span>Profit:</div>
+              <div class="info-value" id="stocksProfit"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>💸</span>Tax:</div>
+              <div class="info-value" id="stocksTax"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>🎯</span>Final:</div>
+              <div class="info-value" id="stocksFinal"></div>
+            </div>
+          </div>
+          <div class="card" id="cardGoldETFs" style="display:none;">
+            <div class="card-title">Gold ETFs</div>
+            <div class="info-row">
+              <div class="info-label"><span>💰</span>Invested:</div>
+              <div class="info-value" id="goldETFInvested"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>📈</span>Expected Return:</div>
+              <div class="info-value" id="goldETFExpectedReturn"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>🔻</span>Worst Case:</div>
+              <div class="info-value" id="goldETFWorstCase"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>🚀</span>Best Case:</div>
+              <div class="info-value" id="goldETFBestCase"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>✅</span>Profit:</div>
+              <div class="info-value" id="goldETFProfit"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>💸</span>Tax:</div>
+              <div class="info-value" id="goldETFTax"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>🎯</span>Final:</div>
+              <div class="info-value" id="goldETFFinal"></div>
+            </div>
+          </div>
+          <div class="card" id="cardFD" style="display:none;">
+            <div class="card-title">FD</div>
+            <div class="info-row">
+              <div class="info-label"><span>💰</span>Invested:</div>
+              <div class="info-value" id="fdInvested"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>📈</span>Expected Return:</div>
+              <div class="info-value" id="fdExpectedReturn"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>🚀</span>Best Case:</div>
+              <div class="info-value" id="fdBestCase"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>✅</span>Profit:</div>
+              <div class="info-value" id="fdProfit"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>💸</span>Tax:</div>
+              <div class="info-value" id="fdTax"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>🎯</span>Final:</div>
+              <div class="info-value" id="fdFinal"></div>
+            </div>
+          </div>
+          <div class="card" id="cardREITS" style="display:none;">
+            <div class="card-title">REITS</div>
+            <div class="info-row">
+              <div class="info-label"><span>💰</span>Invested:</div>
+              <div class="info-value" id="reitsInvested"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>📈</span>Expected Return:</div>
+              <div class="info-value" id="reitsExpectedReturn"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>🔻</span>Worst Case:</div>
+              <div class="info-value" id="reitsWorstCase"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>🚀</span>Best Case:</div>
+              <div class="info-value" id="reitsBestCase"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>✅</span>Profit:</div>
+              <div class="info-value" id="reitsProfit"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>💸</span>Tax:</div>
+              <div class="info-value" id="reitsTax"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>🎯</span>Final:</div>
+              <div class="info-value" id="reitsFinal"></div>
+            </div>
+          </div>
+          <div class="card" id="cardSGB" style="display:none;">
+            <div class="card-title">SGB</div>
+            <div class="info-row">
+              <div class="info-label">📌 SGB Price per Gram:</div>
+              <div class="info-value" id="sgbPricePerGram"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">💰 Investment Amount:</div>
+              <div class="info-value" id="sgbInvested"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">🟡 Grams Purchased:</div>
+              <div class="info-value" id="sgbGrams"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">💸 Total Cost:</div>
+              <div class="info-value" id="sgbTotalCost"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">🔒 Locking Period:</div>
+              <div class="info-value">8 years</div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">💵 Annual Interest (2.5%):</div>
+              <div class="info-value" id="sgbAnnualInterest"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">💰 Total Interest:</div>
+              <div class="info-value" id="sgbTotalInterest"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">🏁 Maturity Amount:</div>
+              <div class="info-value" id="sgbMaturityAmount"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">🎯 Total Return:</div>
+              <div class="info-value" id="sgbTotalReturn"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>✅</span>Profit:</div>
+              <div class="info-value" id="sgbProfit"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>💸</span>Tax:</div>
+              <div class="info-value" id="sgbTax"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>🎯</span>Final:</div>
+              <div class="info-value" id="sgbFinal"></div>
+            </div>
+          </div>
+          <div class="card" id="cardPPF" style="display:none;">
+            <div class="card-title">PPF</div>
+            <div class="info-row">
+              <div class="info-label"><span>💰</span>Invested:</div>
+              <div class="info-value" id="ppfInvested"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>📈</span>Expected Return:</div>
+              <div class="info-value" id="ppfExpectedReturn"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>🔻</span>Worst Case:</div>
+              <div class="info-value" id="ppfWorstCase"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>🚀</span>Best Case:</div>
+              <div class="info-value" id="ppfBestCase"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">💵 Total Principal:</div>
+              <div class="info-value" id="ppfTotalPrincipal"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">🏁 Maturity Amount:</div>
+              <div class="info-value" id="ppfMaturityAmount"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">💰 Total Interest Earned:</div>
+              <div class="info-value" id="ppfTotalInterestEarned"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>✅</span>Profit:</div>
+              <div class="info-value" id="ppfProfit"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>💸</span>Tax:</div>
+              <div class="info-value" id="ppfTax"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>🎯</span>Final:</div>
+              <div class="info-value" id="ppfFinal"></div>
+            </div>
+          </div>
+          <div class="card" id="cardNSC" style="display:none;">
+            <div class="card-title">NSC</div>
+            <div class="info-row">
+              <div class="info-label"><span>💰</span>Invested:</div>
+              <div class="info-value" id="nscInvested"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>📈</span>Expected Return:</div>
+              <div class="info-value" id="nscExpectedReturn"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>🔻</span>Worst Case:</div>
+              <div class="info-value" id="nscWorstCase"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>🚀</span>Best Case:</div>
+              <div class="info-value" id="nscBestCase"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">🏁 Maturity Amount:</div>
+              <div class="info-value" id="nscMaturityAmount"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">💰 Total Investment:</div>
+              <div class="info-value" id="nscInvestment"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">💵 Total Interest:</div>
+              <div class="info-value" id="nscTotalInterest"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>✅</span>Profit:</div>
+              <div class="info-value" id="nscProfit"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>💸</span>Tax:</div>
+              <div class="info-value" id="nscTax"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>🎯</span>Final:</div>
+              <div class="info-value" id="nscFinal"></div>
+            </div>
+          </div>
+          <div class="card" id="cardCrypto" style="display:none;">
+            <div class="card-title">Crypto</div>
+            <div class="info-row">
+              <div class="info-label"><span>💰</span>Invested:</div>
+              <div class="info-value" id="cryptoInvested"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>📈</span>Expected Return:</div>
+              <div class="info-value" id="cryptoExpectedReturn"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>🔻</span>Worst Case:</div>
+              <div class="info-value" id="cryptoWorstCase"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>🚀</span>Best Case:</div>
+              <div class="info-value" id="cryptoBestCase"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>✅</span>Profit:</div>
+              <div class="info-value" id="cryptoProfit"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>💸</span>Tax:</div>
+              <div class="info-value" id="cryptoTax"></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label"><span>🎯</span>Final:</div>
+              <div class="info-value" id="cryptoFinal"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Report Table -->
+
+
+
+    <!-- Invest Now Button Section -->
+    <div id="investNowSection" style="display: block;"> <!-- Ensure it's not hidden -->
+      <button id="investNowButton">Invest Now</button>
+    </div>
+
+    <!-- Variable Table -->
+
+<!-- 
+    <div id="paymentSection" style="display: none; margin-top: 20px;">
+      <div id="methodButtons">
+        <p>Select Payment Method:</p>
+        <button class="BO" data-method="upi">UPI</button>
+        <button class="BO" data-method="card">Card</button>
+      </div>
+
+
+      <div class="payment-section" id="upiSection">
+
+        <p class="upi-instruction">Scan QR code using any UPI app</p>
+        Amount: ₹<span class="upiamount" id="upiAmount"></span>
+
+        <div id="qrcode"></div>
+        <div class="upi-info">
+          UPI ID: <span id="upiId">shuddhayraut777@okhdfcbank</span><br>
+        </div>
+        <button id="upiSubmitBtn" style="margin-top:16px;">Submit Payment</button>
+      </div>
+
+      <div class="payment-section" id="cardSection">
+        <h2>Card Payment</h2>
+        <div class="card-amount-display">
+          Amount: ₹<span id="cardAmount"></span>
+        </div>
+
+        <div>
+          <label for="cardNumber">Card Number:</label>
+          <input type="text" id="cardNumber" maxlength="19" placeholder="xxxx xxxx xxxx xxxx"
+            aria-label="Enter your card number">
+          <span class="error" id="cardNumberError" style="display: none;">Invalid card number</span>
+        </div>
+        <div>
+          <label for="expiryDate">Expiry Date (MM/YY):</label>
+          <input type="text" id="expiryDate" maxlength="5" placeholder="MM/YY"
+            aria-label="Enter expiry date in MM/YY format">
+          <span class="error" id="expiryDateError" style="display: none;">Invalid expiry date</span>
+        </div>
+        <div>
+          <label for="cvv">CVV:</label>
+          <input type="text" id="cvv" maxlength="3" placeholder="CVV" aria-label="Enter CVV">
+          <span class="error" id="cvvError" style="display: none;">Invalid CVV</span>
+        </div>
+        <button id="cardSubmitBtn">Submit Payment</button>
+      </div>
+
+    </div> -->
+  </div>
+  <!-- Login Required Modal -->
+  <div id="loginModal" class="modal-overlay hide">
+    <div class="modal login-modal">
+      <p>Please log in to invest.</p>
+      <div class="modal-buttons">
+        <button id="goToLoginBtn">Go to Login</button>
+        <button id="closeLoginModalBtn">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <!-- End Login Modal -->
+    <!-- Add this to your HTML file -->
+  <div class="popup-overlay" id="popupOverlay">
+    <div class="popup-message"></div>
+  </div>
+  <div id="popup_input" class="popup-input hide"></div>
+
+  <!-- Include Chart.js Library -->
+  <link rel="stylesheet" href="popup.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+
+
+  <!-- JavaScript Logic -->
+  <script src="./investment.js"></script>
+  <script type="module" src="./investment-selection.js"></script>
+  <script type="module" src="./investment-selection-manual.js"></script>
+  <script src="./selection.js"></script>
+  <script src="./payment.js"></script>  <script src="../completed/auth.js"></script>
+  <!-- <script src="./return.js"></script> -->  <script>
+      function validateRemainingAllocation(remainingText) {
+        // Return true if allocation is valid, false if not
+        const remaining = remainingText.includes("Remaining:") ? 
+          parseFloat(remainingText.replace("Remaining: ", "")) :
+          (remainingText.includes("Exceeded by") ? 
+            -parseFloat(remainingText.replace("Exceeded by ", "")) : 
+            100);
+
+        if (!isNaN(remaining)) {
+          if (remainingText !== "100% Allocated") {
+            showPopup("Please allocate exactly 100% before proceeding. Current remaining allocation: " + remaining.toFixed(2) + "%", 3000);
+            return false;
+          }
+          return true;
+        } else {
+          showPopup("Please allocate investments to proceed", 3000);
+          return false;
+        }
+      }
+      
+      // Show/hide allocation sections
+      function showAutoAllocation() {
+        const remainingText = document.getElementById("remaining-allocation").textContent;
+        if (!validateRemainingAllocation(remainingText)) {
+          return;
+        }
+
+        document.getElementById('autoAllocationSection').style.display = 'block';
+        document.getElementById('manualAllocationSection').style.display = 'none';
+        window.autoSelection(); // This should render into #autoAllocationSection
+      }
+      
+      function showManualAllocation() {
+        const remainingText = document.getElementById("remaining-allocation").textContent;
+        if (!validateRemainingAllocation(remainingText)) {
+          return;
+        }
+
+        document.getElementById('autoAllocationSection').style.display = 'none';
+        document.getElementById('manualAllocationSection').style.display = 'block';
+        window.manualSelection(); // This should render into #manualAllocationSection
+      }
+      
+      
+
+    // In your autoSelection() and manualSelection() functions (in their respective JS files),
+    // make sure to render results into the correct div:
+    // Example for autoSelection.js:
+    // document.getElementById('autoAllocationSection').innerHTML = ...your result HTML...
+    // Example for manualSelection.js:
+    // document.getElementById('manualAllocationSection').innerHTML = ...your result HTML...
+  </script>        <!-- FD Small Finance Bank Warning Popup -->
+        <div id="sfbWarningPopup" class="warning-popup">
+            <div class="warning-popup-close-container">
+                <button class="warning-popup-close">Done</button>
+            </div>
+            <div class="warning-popup-content">
+                <p><strong>💡 Helpful Tip</strong></p>
+                <p>To ensure the safety of your investments, we suggest keeping your deposit within ₹4,50,000 per Small Finance Bank.</p>
+            </div>
+            <a href="https://youtu.be/4Qav7zWcqZ0?si=h10_hyjmLEb7Yw58" target="_blank" class="warning-popup-button">
+                <span>🎓 Learn More About Safe Banking</span>
+            </a>
+        </div>
+        <script type="module">
+      import { manualSelection } from './investment-selection-manual.js';
+      
+      // Make manualSelection available globally
+      window.manualSelection = manualSelection;
+      
+      // Define showManualAllocation function
+      window.showManualAllocation = function() {
+        try {
+          manualSelection();
+          document.getElementById('manualAllocationSection').style.display = 'block';
+          document.getElementById('autoAllocationSection').style.display = 'none';
+        } catch (error) {
+          console.error('Error in manual selection:', error);
+        }
+      };
+    </script>
+</body>
+
+</html>

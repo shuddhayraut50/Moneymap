@@ -1,0 +1,73 @@
+.news-list {
+    margin: 24px 0;
+}
+.news-card {
+    background: #f7fafd;
+    border-radius: 8px;
+    padding: 18px 24px;
+    margin-bottom: 18px;
+}
+.news-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+.news-date {
+    color: #888;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+}
+.news-summary {
+    margin-bottom: 8px;
+}
+.news-link {
+    color: #1976d2;
+    text-decoration: none;
+    font-size: 0.98rem;
+}
+.analyst-section {
+    background: #fafbfc;
+    border-radius: 8px;
+    padding: 18px 24px;
+    margin-bottom: 18px;
+}
+.analyst-consensus {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+.analyst-consensus .label {
+    color: #888;
+    margin-right: 8px;
+}
+.analyst-consensus .value {
+    color: #1a7f37;
+    font-weight: 700;
+}
+.analyst-bar-container {
+    background: #e0e0e0;
+    border-radius: 6px;
+    height: 10px;
+    width: 100%;
+    margin-bottom: 8px;
+    position: relative;
+}
+.analyst-bar {
+    background: #1a7f37;
+    height: 10px;
+    border-radius: 6px;
+}
+.analyst-bar-label {
+    position: absolute;
+    right: 8px;
+    top: -18px;
+    font-size: 0.95rem;
+    color: #333;
+}
+.analyst-breakdown {
+    display: flex;
+    gap: 32px;
+    font-size: 1rem;
+    margin-top: 8px;
+}
+.analyst-breakdown b {
+    font-weight: 700;
+}

@@ -1,0 +1,775 @@
+{
+  "stocks": {
+    "2025-05-24": {
+      "UltraTech Cement": 1200.12,
+      "Maruti Suzuki India": 230.45,
+      "Pidilite Industries": 2900.11,
+      "Adani Green Energy": 950.22,
+      "Adani Enterprises Ltd.": 2250.33,
+      "HDFC Bank Ltd.": 1760.44
+    },
+    "2025-05-25": {
+      "UltraTech Cement": 1195,
+      "Maruti Suzuki India": 231.5,
+      "Pidilite Industries": 2895,
+      "Adani Green Energy": 955,
+      "Adani Enterprises Ltd.": 2245,
+      "HDFC Bank Ltd.": 1765
+    },
+    "2025-05-26": {
+      "UltraTech Cement": 1205,
+      "Maruti Suzuki India": 229,
+      "Pidilite Industries": 2910,
+      "Adani Green Energy": 948,
+      "Adani Enterprises Ltd.": 2258,
+      "HDFC Bank Ltd.": 1758
+    },
+    "2025-05-27": {
+      "UltraTech Cement": 1230,
+      "Maruti Suzuki India": 236,
+      "Pidilite Industries": 2930,
+      "Adani Green Energy": 980,
+      "Adani Enterprises Ltd.": 2280,
+      "HDFC Bank Ltd.": 1790
+    },
+    "2025-05-28": {
+      "UltraTech Cement": 1240,
+      "Maruti Suzuki India": 237,
+      "Pidilite Industries": 2940,
+      "Adani Green Energy": 990,
+      "Adani Enterprises Ltd.": 2290,
+      "HDFC Bank Ltd.": 1800
+    },
+    "2025-05-29": {
+      "UltraTech Cement": 1250,
+      "Maruti Suzuki India": 238,
+      "Pidilite Industries": 2950,
+      "Adani Green Energy": 1000,
+      "Adani Enterprises Ltd.": 2300,
+      "HDFC Bank Ltd.": 1810
+    },
+    "2025-05-30": {
+      "UltraTech Cement": 1260,
+      "Maruti Suzuki India": 239,
+      "Pidilite Industries": 2960,
+      "Adani Green Energy": 1010,
+      "Adani Enterprises Ltd.": 2310,
+      "HDFC Bank Ltd.": 1820
+    },
+    "2025-05-31": {
+      "UltraTech Cement": 1270,
+      "Maruti Suzuki India": 240,
+      "Pidilite Industries": 2970,
+      "Adani Green Energy": 1020,
+      "Adani Enterprises Ltd.": 2320,
+      "HDFC Bank Ltd.": 1830
+    },
+    "2025-06-01": {
+      "UltraTech Cement": 1280,
+      "Maruti Suzuki India": 241,
+      "Pidilite Industries": 2980,
+      "Adani Green Energy": 1030,
+      "Adani Enterprises Ltd.": 2330,
+      "HDFC Bank Ltd.": 1840
+    },
+    "2025-06-02": {
+      "UltraTech Cement": 1290,
+      "Maruti Suzuki India": 242,
+      "Pidilite Industries": 2990,
+      "Adani Green Energy": 1040,
+      "Adani Enterprises Ltd.": 2340,
+      "HDFC Bank Ltd.": 1850
+    },
+    "2025-06-03": {
+      "UltraTech Cement": 1300.44,
+      "Maruti Suzuki India": 176.3,
+      "Pidilite Industries": 2992.02,
+      "Adani Green Energy": 1099.75,
+      "Adani Enterprises Ltd.": 2554.15,
+      "HDFC Bank Ltd.": 2046.36
+    },
+    "2025-06-04": {
+      "UltraTech Cement": 1651.59,
+      "Maruti Suzuki India": 248.9,
+      "Pidilite Industries": 2812.03,
+      "Adani Green Energy": 1032.23,
+      "Adani Enterprises Ltd.": 2658.43,
+      "HDFC Bank Ltd.": 1989.16
+    },
+    "2025-06-05": {
+      "UltraTech Cement": 1408.45,
+      "Maruti Suzuki India": 270.54,
+      "Pidilite Industries": 2865.92,
+      "Adani Green Energy": 993.97,
+      "Adani Enterprises Ltd.": 2407.92,
+      "HDFC Bank Ltd.": 2098.94
+    },
+    "2025-06-06": {
+      "UltraTech Cement": 1470.11,
+      "Maruti Suzuki India": 253.86,
+      "Pidilite Industries": 3040.87,
+      "Adani Green Energy": 965.09,
+      "Adani Enterprises Ltd.": 2480.13,
+      "HDFC Bank Ltd.": 2041.45
+    },
+    "2025-06-09": {
+      "UltraTech Cement": 1552.51,
+      "Maruti Suzuki India": 246.2,
+      "Pidilite Industries": 2875.1,
+      "Adani Green Energy": 980.96,
+      "Adani Enterprises Ltd.": 2485.08,
+      "HDFC Bank Ltd.": 2041.71
+    },
+    "2025-06-17": {
+      "UltraTech Cement": 1341.56,
+      "Maruti Suzuki India": 237.29,
+      "Pidilite Industries": 2992.51,
+      "Adani Green Energy": 972,
+      "Adani Enterprises Ltd.": 2438.14,
+      "HDFC Bank Ltd.": 2075.39
+    },
+    "2025-06-19": {
+      "UltraTech Cement": 1089,
+      "Maruti Suzuki India": 206.44,
+      "Pidilite Industries": 3623.89,
+      "Adani Green Energy": 1068.53,
+      "Adani Enterprises Ltd.": 1997.1,
+      "HDFC Bank Ltd.": 1937.45
+    },
+    "2025-06-20": {
+      "UltraTech Cement": 1248.15,
+      "Maruti Suzuki India": 202.45,
+      "Pidilite Industries": 3392.19,
+      "Adani Green Energy": 1220.5,
+      "Adani Enterprises Ltd.": 1937.5,
+      "HDFC Bank Ltd.": 1992.38
+    },
+    "2025-06-21": {
+      "UltraTech Cement": 1220.26,
+      "Maruti Suzuki India": 223.71,
+      "Pidilite Industries": 3035.07,
+      "Adani Green Energy": 1208.78,
+      "Adani Enterprises Ltd.": 2047.86,
+      "HDFC Bank Ltd.": 1885.62
+    }
+  },
+  "crypto": {
+    "2025-05-24": {
+      "Bitcoin (BTC)": 6600000,
+      "Ethereum (ETH)": 125000,
+      "Binance Coin (BNB)": 47000,
+      "Solana (SOL)": 9000,
+      "Dogecoin (DOGE)": 12
+    },
+    "2025-05-25": {
+      "Bitcoin (BTC)": 6610000,
+      "Ethereum (ETH)": 125500,
+      "Binance Coin (BNB)": 47100,
+      "Solana (SOL)": 9050,
+      "Dogecoin (DOGE)": 12.1
+    },
+    "2025-05-26": {
+      "Bitcoin (BTC)": 6620000,
+      "Ethereum (ETH)": 126000,
+      "Binance Coin (BNB)": 47200,
+      "Solana (SOL)": 9100,
+      "Dogecoin (DOGE)": 12.2
+    },
+    "2025-05-27": {
+      "Bitcoin (BTC)": 6630000,
+      "Ethereum (ETH)": 126500,
+      "Binance Coin (BNB)": 47300,
+      "Solana (SOL)": 9150,
+      "Dogecoin (DOGE)": 12.3
+    },
+    "2025-05-28": {
+      "Bitcoin (BTC)": 6640000,
+      "Ethereum (ETH)": 127000,
+      "Binance Coin (BNB)": 47400,
+      "Solana (SOL)": 9200,
+      "Dogecoin (DOGE)": 12.4
+    },
+    "2025-05-29": {
+      "Bitcoin (BTC)": 6650000,
+      "Ethereum (ETH)": 127500,
+      "Binance Coin (BNB)": 47500,
+      "Solana (SOL)": 9250,
+      "Dogecoin (DOGE)": 12.5
+    },
+    "2025-05-30": {
+      "Bitcoin (BTC)": 6660000,
+      "Ethereum (ETH)": 128000,
+      "Binance Coin (BNB)": 47600,
+      "Solana (SOL)": 9300,
+      "Dogecoin (DOGE)": 12.6
+    },
+    "2025-05-31": {
+      "Bitcoin (BTC)": 6670000,
+      "Ethereum (ETH)": 128500,
+      "Binance Coin (BNB)": 47700,
+      "Solana (SOL)": 9350,
+      "Dogecoin (DOGE)": 12.7
+    },
+    "2025-06-01": {
+      "Bitcoin (BTC)": 6680000,
+      "Ethereum (ETH)": 129000,
+      "Binance Coin (BNB)": 47800,
+      "Solana (SOL)": 9400,
+      "Dogecoin (DOGE)": 12.8
+    },
+    "2025-06-02": {
+      "Bitcoin (BTC)": 6690000,
+      "Ethereum (ETH)": 129500,
+      "Binance Coin (BNB)": 47900,
+      "Solana (SOL)": 9450,
+      "Dogecoin (DOGE)": 12.9
+    },
+    "2025-06-03": {
+      "Bitcoin (BTC)": 8117285.82,
+      "Ethereum (ETH)": 177277.48,
+      "Binance Coin (BNB)": 50999.19,
+      "Solana (SOL)": 8596.1,
+      "Dogecoin (DOGE)": 12.59
+    },
+    "2025-06-04": {
+      "Bitcoin (BTC)": 6859189.36,
+      "Ethereum (ETH)": 145656.78,
+      "Binance Coin (BNB)": 41019.39,
+      "Solana (SOL)": 10720.97,
+      "Dogecoin (DOGE)": 15.78
+    },
+    "2025-06-05": {
+      "Bitcoin (BTC)": 6942017.84,
+      "Ethereum (ETH)": 167542.04,
+      "Binance Coin (BNB)": 46802.27,
+      "Solana (SOL)": 11036.77,
+      "Dogecoin (DOGE)": 12.87
+    },
+    "2025-06-06": {
+      "Bitcoin (BTC)": 7169354.65,
+      "Ethereum (ETH)": 162311.62,
+      "Binance Coin (BNB)": 48718.3,
+      "Solana (SOL)": 10597.28,
+      "Dogecoin (DOGE)": 12.94
+    },
+    "2025-06-09": {
+      "Bitcoin (BTC)": 7242442.83,
+      "Ethereum (ETH)": 158906.3,
+      "Binance Coin (BNB)": 48989.74,
+      "Solana (SOL)": 10760.41,
+      "Dogecoin (DOGE)": 12.94
+    },
+    "2025-06-17": {
+      "Bitcoin (BTC)": 6930198.98,
+      "Ethereum (ETH)": 154922.18,
+      "Binance Coin (BNB)": 48684.32,
+      "Solana (SOL)": 9678.86,
+      "Dogecoin (DOGE)": 13.87
+    },
+    "2025-06-19": {
+      "Bitcoin (BTC)": 6797734.69,
+      "Ethereum (ETH)": 131745.99,
+      "Binance Coin (BNB)": 55471.02,
+      "Solana (SOL)": 13878.64,
+      "Dogecoin (DOGE)": 11.86
+    },
+    "2025-06-20": {
+      "Bitcoin (BTC)": 7381531.96,
+      "Ethereum (ETH)": 141167.71,
+      "Binance Coin (BNB)": 59161.58,
+      "Solana (SOL)": 12446.68,
+      "Dogecoin (DOGE)": 12.69
+    },
+    "2025-06-21": {
+      "Bitcoin (BTC)": 7206224.83,
+      "Ethereum (ETH)": 148031.38,
+      "Binance Coin (BNB)": 56604.75,
+      "Solana (SOL)": 12600.7,
+      "Dogecoin (DOGE)": 14.01
+    }
+  },
+  "etfs": {
+    "2025-05-24": {
+      "Nippon Gold ETF": 74.92,
+      "HDFC Gold ETF": 77.16,
+      "SBI Gold ETF": 77.02,
+      "ICICI Prudential Nifty Next 50 ETF": 300,
+      "Motilal Oswal NASDAQ 100 ETF": 1500,
+      "Invesco India Nifty ETF": 200,
+      "Nippon India Nifty 50 ETF": 250
+    },
+    "2025-05-25": {
+      "Nippon Gold ETF": 75.12,
+      "HDFC Gold ETF": 77.26,
+      "SBI Gold ETF": 77.22,
+      "ICICI Prudential Nifty Next 50 ETF": 301,
+      "Motilal Oswal NASDAQ 100 ETF": 1502,
+      "Invesco India Nifty ETF": 201,
+      "Nippon India Nifty 50 ETF": 251
+    },
+    "2025-05-26": {
+      "Nippon Gold ETF": 75.32,
+      "HDFC Gold ETF": 77.36,
+      "SBI Gold ETF": 77.42,
+      "ICICI Prudential Nifty Next 50 ETF": 302,
+      "Motilal Oswal NASDAQ 100 ETF": 1504,
+      "Invesco India Nifty ETF": 202,
+      "Nippon India Nifty 50 ETF": 252
+    },
+    "2025-05-27": {
+      "Nippon Gold ETF": 75.52,
+      "HDFC Gold ETF": 77.46,
+      "SBI Gold ETF": 77.62,
+      "ICICI Prudential Nifty Next 50 ETF": 303,
+      "Motilal Oswal NASDAQ 100 ETF": 1506,
+      "Invesco India Nifty ETF": 203,
+      "Nippon India Nifty 50 ETF": 253
+    },
+    "2025-05-28": {
+      "Nippon Gold ETF": 75.72,
+      "HDFC Gold ETF": 77.56,
+      "SBI Gold ETF": 77.82,
+      "ICICI Prudential Nifty Next 50 ETF": 304,
+      "Motilal Oswal NASDAQ 100 ETF": 1508,
+      "Invesco India Nifty ETF": 204,
+      "Nippon India Nifty 50 ETF": 254
+    },
+    "2025-05-29": {
+      "Nippon Gold ETF": 75.92,
+      "HDFC Gold ETF": 77.66,
+      "SBI Gold ETF": 78.02,
+      "ICICI Prudential Nifty Next 50 ETF": 305,
+      "Motilal Oswal NASDAQ 100 ETF": 1510,
+      "Invesco India Nifty ETF": 205,
+      "Nippon India Nifty 50 ETF": 255
+    },
+    "2025-05-30": {
+      "Nippon Gold ETF": 76.12,
+      "HDFC Gold ETF": 77.76,
+      "SBI Gold ETF": 78.22,
+      "ICICI Prudential Nifty Next 50 ETF": 306,
+      "Motilal Oswal NASDAQ 100 ETF": 1512,
+      "Invesco India Nifty ETF": 206,
+      "Nippon India Nifty 50 ETF": 256
+    },
+    "2025-05-31": {
+      "Nippon Gold ETF": 76.32,
+      "HDFC Gold ETF": 77.86,
+      "SBI Gold ETF": 78.42,
+      "ICICI Prudential Nifty Next 50 ETF": 307,
+      "Motilal Oswal NASDAQ 100 ETF": 1514,
+      "Invesco India Nifty ETF": 207,
+      "Nippon India Nifty 50 ETF": 257
+    },
+    "2025-06-01": {
+      "Nippon Gold ETF": 76.52,
+      "HDFC Gold ETF": 77.96,
+      "SBI Gold ETF": 78.62,
+      "ICICI Prudential Nifty Next 50 ETF": 308,
+      "Motilal Oswal NASDAQ 100 ETF": 1516,
+      "Invesco India Nifty ETF": 208,
+      "Nippon India Nifty 50 ETF": 258
+    },
+    "2025-06-02": {
+      "Nippon Gold ETF": 76.72,
+      "HDFC Gold ETF": 78.06,
+      "SBI Gold ETF": 78.82,
+      "ICICI Prudential Nifty Next 50 ETF": 309,
+      "Motilal Oswal NASDAQ 100 ETF": 1518,
+      "Invesco India Nifty ETF": 209,
+      "Nippon India Nifty 50 ETF": 259
+    },
+    "2025-06-03": {
+      "Nippon Gold ETF": 90.1,
+      "HDFC Gold ETF": 96.19,
+      "SBI Gold ETF": 79.92,
+      "ICICI Prudential Nifty Next 50 ETF": 319.24,
+      "Motilal Oswal NASDAQ 100 ETF": 1547.62,
+      "Invesco India Nifty ETF": 241.77,
+      "Nippon India Nifty 50 ETF": 331.54
+    },
+    "2025-06-04": {
+      "Nippon Gold ETF": 52.85,
+      "HDFC Gold ETF": 77.11,
+      "SBI Gold ETF": 75.23,
+      "ICICI Prudential Nifty Next 50 ETF": 287.02,
+      "Motilal Oswal NASDAQ 100 ETF": 1846.1,
+      "Invesco India Nifty ETF": 204,
+      "Nippon India Nifty 50 ETF": 254.77
+    },
+    "2025-06-05": {
+      "Nippon Gold ETF": 64.35,
+      "HDFC Gold ETF": 86.47,
+      "SBI Gold ETF": 67.23,
+      "ICICI Prudential Nifty Next 50 ETF": 257.16,
+      "Motilal Oswal NASDAQ 100 ETF": 1728.8,
+      "Invesco India Nifty ETF": 188.26,
+      "Nippon India Nifty 50 ETF": 262.16
+    },
+    "2025-06-06": {
+      "Nippon Gold ETF": 63.22,
+      "HDFC Gold ETF": 93.84,
+      "SBI Gold ETF": 69.89,
+      "ICICI Prudential Nifty Next 50 ETF": 244.24,
+      "Motilal Oswal NASDAQ 100 ETF": 1697.3,
+      "Invesco India Nifty ETF": 177.36,
+      "Nippon India Nifty 50 ETF": 259.36
+    },
+    "2025-06-09": {
+      "Nippon Gold ETF": 63.22,
+      "HDFC Gold ETF": 94.74,
+      "SBI Gold ETF": 67.6,
+      "ICICI Prudential Nifty Next 50 ETF": 234.46,
+      "Motilal Oswal NASDAQ 100 ETF": 1638.77,
+      "Invesco India Nifty ETF": 179.53,
+      "Nippon India Nifty 50 ETF": 257.54
+    },
+    "2025-06-17": {
+      "Nippon Gold ETF": 65.08,
+      "HDFC Gold ETF": 92.87,
+      "SBI Gold ETF": 73.1,
+      "ICICI Prudential Nifty Next 50 ETF": 251.04,
+      "Motilal Oswal NASDAQ 100 ETF": 1583.62,
+      "Invesco India Nifty ETF": 164.82,
+      "Nippon India Nifty 50 ETF": 254.85
+    },
+    "2025-06-19": {
+      "Nippon Gold ETF": 107.6,
+      "HDFC Gold ETF": 94.68,
+      "SBI Gold ETF": 85.27,
+      "ICICI Prudential Nifty Next 50 ETF": 286.12,
+      "Motilal Oswal NASDAQ 100 ETF": 2005.86,
+      "Invesco India Nifty ETF": 179.67,
+      "Nippon India Nifty 50 ETF": 295.3
+    },
+    "2025-06-20": {
+      "Nippon Gold ETF": 94.34,
+      "HDFC Gold ETF": 88.67,
+      "SBI Gold ETF": 92.19,
+      "ICICI Prudential Nifty Next 50 ETF": 292.16,
+      "Motilal Oswal NASDAQ 100 ETF": 1805.95,
+      "Invesco India Nifty ETF": 166.21,
+      "Nippon India Nifty 50 ETF": 309.33
+    },
+    "2025-06-21": {
+      "Nippon Gold ETF": 101.31,
+      "HDFC Gold ETF": 86.13,
+      "SBI Gold ETF": 90.49,
+      "ICICI Prudential Nifty Next 50 ETF": 309.72,
+      "Motilal Oswal NASDAQ 100 ETF": 1799.71,
+      "Invesco India Nifty ETF": 168.56,
+      "Nippon India Nifty 50 ETF": 300.51
+    }
+  },
+  "mutualfunds": {
+    "2025-05-24": {
+      "Kotak Liquid Fund": 40.09,
+      "Nippon India Money Market Fund": 33.51,
+      "DSP Equity Opportunities Fund": 367.38,
+      "UTI Flexi Cap Fund": 295.22,
+      "Franklin India High Growth": 500,
+      "SBI Consumption Opportunities": 300
+    },
+    "2025-05-25": {
+      "Kotak Liquid Fund": 40.19,
+      "Nippon India Money Market Fund": 33.61,
+      "DSP Equity Opportunities Fund": 368.38,
+      "UTI Flexi Cap Fund": 296.22,
+      "Franklin India High Growth": 501,
+      "SBI Consumption Opportunities": 301
+    },
+    "2025-05-26": {
+      "Kotak Liquid Fund": 40.29,
+      "Nippon India Money Market Fund": 33.71,
+      "DSP Equity Opportunities Fund": 369.38,
+      "UTI Flexi Cap Fund": 297.22,
+      "Franklin India High Growth": 502,
+      "SBI Consumption Opportunities": 302
+    },
+    "2025-05-27": {
+      "Kotak Liquid Fund": 40.39,
+      "Nippon India Money Market Fund": 33.81,
+      "DSP Equity Opportunities Fund": 370.38,
+      "UTI Flexi Cap Fund": 298.22,
+      "Franklin India High Growth": 503,
+      "SBI Consumption Opportunities": 303
+    },
+    "2025-05-28": {
+      "Kotak Liquid Fund": 40.49,
+      "Nippon India Money Market Fund": 33.91,
+      "DSP Equity Opportunities Fund": 371.38,
+      "UTI Flexi Cap Fund": 299.22,
+      "Franklin India High Growth": 504,
+      "SBI Consumption Opportunities": 304
+    },
+    "2025-05-29": {
+      "Kotak Liquid Fund": 40.59,
+      "Nippon India Money Market Fund": 34.01,
+      "DSP Equity Opportunities Fund": 372.38,
+      "UTI Flexi Cap Fund": 300.22,
+      "Franklin India High Growth": 505,
+      "SBI Consumption Opportunities": 305
+    },
+    "2025-05-30": {
+      "Kotak Liquid Fund": 40.69,
+      "Nippon India Money Market Fund": 34.11,
+      "DSP Equity Opportunities Fund": 373.38,
+      "UTI Flexi Cap Fund": 301.22,
+      "Franklin India High Growth": 506,
+      "SBI Consumption Opportunities": 306
+    },
+    "2025-05-31": {
+      "Kotak Liquid Fund": 40.79,
+      "Nippon India Money Market Fund": 34.21,
+      "DSP Equity Opportunities Fund": 374.38,
+      "UTI Flexi Cap Fund": 302.22,
+      "Franklin India High Growth": 507,
+      "SBI Consumption Opportunities": 307
+    },
+    "2025-06-01": {
+      "Kotak Liquid Fund": 40.89,
+      "Nippon India Money Market Fund": 34.31,
+      "DSP Equity Opportunities Fund": 375.38,
+      "UTI Flexi Cap Fund": 303.22,
+      "Franklin India High Growth": 508,
+      "SBI Consumption Opportunities": 308
+    },
+    "2025-06-02": {
+      "Kotak Liquid Fund": 40.99,
+      "Nippon India Money Market Fund": 34.41,
+      "DSP Equity Opportunities Fund": 376.38,
+      "UTI Flexi Cap Fund": 304.22,
+      "Franklin India High Growth": 509,
+      "SBI Consumption Opportunities": 309
+    },
+    "2025-06-03": {
+      "Kotak Liquid Fund": 34.73,
+      "Nippon India Money Market Fund": 42.74,
+      "DSP Equity Opportunities Fund": 503.27,
+      "UTI Flexi Cap Fund": 311.33,
+      "Franklin India High Growth": 633.69,
+      "SBI Consumption Opportunities": 293.18
+    },
+    "2025-06-04": {
+      "Kotak Liquid Fund": 33.22,
+      "Nippon India Money Market Fund": 35.48,
+      "DSP Equity Opportunities Fund": 405.32,
+      "UTI Flexi Cap Fund": 344.5,
+      "Franklin India High Growth": 555.78,
+      "SBI Consumption Opportunities": 315.7
+    },
+    "2025-06-05": {
+      "Kotak Liquid Fund": 36.5,
+      "Nippon India Money Market Fund": 33.67,
+      "DSP Equity Opportunities Fund": 435.32,
+      "UTI Flexi Cap Fund": 389.5,
+      "Franklin India High Growth": 473.28,
+      "SBI Consumption Opportunities": 347.83
+    },
+    "2025-06-06": {
+      "Kotak Liquid Fund": 36.68,
+      "Nippon India Money Market Fund": 34.76,
+      "DSP Equity Opportunities Fund": 444.14,
+      "UTI Flexi Cap Fund": 380.15,
+      "Franklin India High Growth": 464.41,
+      "SBI Consumption Opportunities": 366.56
+    },
+    "2025-06-09": {
+      "Kotak Liquid Fund": 37.48,
+      "Nippon India Money Market Fund": 34,
+      "DSP Equity Opportunities Fund": 446.44,
+      "UTI Flexi Cap Fund": 365.17,
+      "Franklin India High Growth": 444.28,
+      "SBI Consumption Opportunities": 357.71
+    },
+    "2025-06-17": {
+      "Kotak Liquid Fund": 38.13,
+      "Nippon India Money Market Fund": 36.65,
+      "DSP Equity Opportunities Fund": 426.82,
+      "UTI Flexi Cap Fund": 364.2,
+      "Franklin India High Growth": 448.05,
+      "SBI Consumption Opportunities": 359.09
+    },
+    "2025-06-19": {
+      "Kotak Liquid Fund": 53.61,
+      "Nippon India Money Market Fund": 36.5,
+      "DSP Equity Opportunities Fund": 307.02,
+      "UTI Flexi Cap Fund": 307.37,
+      "Franklin India High Growth": 522.59,
+      "SBI Consumption Opportunities": 359.76
+    },
+    "2025-06-20": {
+      "Kotak Liquid Fund": 49.48,
+      "Nippon India Money Market Fund": 35.07,
+      "DSP Equity Opportunities Fund": 272.87,
+      "UTI Flexi Cap Fund": 272.11,
+      "Franklin India High Growth": 591.27,
+      "SBI Consumption Opportunities": 358.68
+    },
+    "2025-06-21": {
+      "Kotak Liquid Fund": 51.65,
+      "Nippon India Money Market Fund": 35.3,
+      "DSP Equity Opportunities Fund": 307.39,
+      "UTI Flexi Cap Fund": 275.36,
+      "Franklin India High Growth": 663.53,
+      "SBI Consumption Opportunities": 337.12
+    }
+  },
+  "reits": {
+    "2025-05-24": {
+      "Brookfield India Real Estate Trust": 290,
+      "Embassy Office Parks REIT": 378,
+      "Mindspace Business Parks REIT": 381,
+      "K Raheja Corp": 800,
+      "Phoenix Mills": 450,
+      "Indiabulls Real Estate": 500
+    },
+    "2025-05-25": {
+      "Brookfield India Real Estate Trust": 291,
+      "Embassy Office Parks REIT": 379,
+      "Mindspace Business Parks REIT": 382,
+      "K Raheja Corp": 801,
+      "Phoenix Mills": 451,
+      "Indiabulls Real Estate": 501
+    },
+    "2025-05-26": {
+      "Brookfield India Real Estate Trust": 292,
+      "Embassy Office Parks REIT": 380,
+      "Mindspace Business Parks REIT": 383,
+      "K Raheja Corp": 802,
+      "Phoenix Mills": 452,
+      "Indiabulls Real Estate": 502
+    },
+    "2025-05-27": {
+      "Brookfield India Real Estate Trust": 293,
+      "Embassy Office Parks REIT": 381,
+      "Mindspace Business Parks REIT": 384,
+      "K Raheja Corp": 803,
+      "Phoenix Mills": 453,
+      "Indiabulls Real Estate": 503
+    },
+    "2025-05-28": {
+      "Brookfield India Real Estate Trust": 294,
+      "Embassy Office Parks REIT": 382,
+      "Mindspace Business Parks REIT": 385,
+      "K Raheja Corp": 804,
+      "Phoenix Mills": 454,
+      "Indiabulls Real Estate": 504
+    },
+    "2025-05-29": {
+      "Brookfield India Real Estate Trust": 295,
+      "Embassy Office Parks REIT": 383,
+      "Mindspace Business Parks REIT": 386,
+      "K Raheja Corp": 805,
+      "Phoenix Mills": 455,
+      "Indiabulls Real Estate": 505
+    },
+    "2025-05-30": {
+      "Brookfield India Real Estate Trust": 296,
+      "Embassy Office Parks REIT": 384,
+      "Mindspace Business Parks REIT": 387,
+      "K Raheja Corp": 806,
+      "Phoenix Mills": 456,
+      "Indiabulls Real Estate": 506
+    },
+    "2025-05-31": {
+      "Brookfield India Real Estate Trust": 297,
+      "Embassy Office Parks REIT": 385,
+      "Mindspace Business Parks REIT": 388,
+      "K Raheja Corp": 807,
+      "Phoenix Mills": 457,
+      "Indiabulls Real Estate": 507
+    },
+    "2025-06-01": {
+      "Brookfield India Real Estate Trust": 298,
+      "Embassy Office Parks REIT": 386,
+      "Mindspace Business Parks REIT": 389,
+      "K Raheja Corp": 808,
+      "Phoenix Mills": 458,
+      "Indiabulls Real Estate": 508
+    },
+    "2025-06-02": {
+      "Brookfield India Real Estate Trust": 299,
+      "Embassy Office Parks REIT": 387,
+      "Mindspace Business Parks REIT": 390,
+      "K Raheja Corp": 809,
+      "Phoenix Mills": 459,
+      "Indiabulls Real Estate": 509
+    },
+    "2025-06-03": {
+      "Brookfield India Real Estate Trust": 301.43,
+      "Embassy Office Parks REIT": 411.4,
+      "Mindspace Business Parks REIT": 408.97,
+      "K Raheja Corp": 904.92,
+      "Phoenix Mills": 462.83,
+      "Indiabulls Real Estate": 497.32
+    },
+    "2025-06-04": {
+      "Brookfield India Real Estate Trust": 278.46,
+      "Embassy Office Parks REIT": 344.17,
+      "Mindspace Business Parks REIT": 453.89,
+      "K Raheja Corp": 789.38,
+      "Phoenix Mills": 498.05,
+      "Indiabulls Real Estate": 580.8
+    },
+    "2025-06-05": {
+      "Brookfield India Real Estate Trust": 293.17,
+      "Embassy Office Parks REIT": 367.43,
+      "Mindspace Business Parks REIT": 527.48,
+      "K Raheja Corp": 821.16,
+      "Phoenix Mills": 516.61,
+      "Indiabulls Real Estate": 570.88
+    },
+    "2025-06-06": {
+      "Brookfield India Real Estate Trust": 292.67,
+      "Embassy Office Parks REIT": 382.36,
+      "Mindspace Business Parks REIT": 507.55,
+      "K Raheja Corp": 874.16,
+      "Phoenix Mills": 523.74,
+      "Indiabulls Real Estate": 575.03
+    },
+    "2025-06-09": {
+      "Brookfield India Real Estate Trust": 296.45,
+      "Embassy Office Parks REIT": 384.42,
+      "Mindspace Business Parks REIT": 532.33,
+      "K Raheja Corp": 830.62,
+      "Phoenix Mills": 526.15,
+      "Indiabulls Real Estate": 579.02
+    },
+    "2025-06-17": {
+      "Brookfield India Real Estate Trust": 298.98,
+      "Embassy Office Parks REIT": 412.06,
+      "Mindspace Business Parks REIT": 529.47,
+      "K Raheja Corp": 926.09,
+      "Phoenix Mills": 552.13,
+      "Indiabulls Real Estate": 558.62
+    },
+    "2025-06-19": {
+      "Brookfield India Real Estate Trust": 336.05,
+      "Embassy Office Parks REIT": 276.7,
+      "Mindspace Business Parks REIT": 394.84,
+      "K Raheja Corp": 805.49,
+      "Phoenix Mills": 489.37,
+      "Indiabulls Real Estate": 603.5
+    },
+    "2025-06-20": {
+      "Brookfield India Real Estate Trust": 297.55,
+      "Embassy Office Parks REIT": 304.62,
+      "Mindspace Business Parks REIT": 425.09,
+      "K Raheja Corp": 893.44,
+      "Phoenix Mills": 534.3,
+      "Indiabulls Real Estate": 541.58
+    },
+    "2025-06-21": {
+      "Brookfield India Real Estate Trust": 319.48,
+      "Embassy Office Parks REIT": 305.96,
+      "Mindspace Business Parks REIT": 440.19,
+      "K Raheja Corp": 936.47,
+      "Phoenix Mills": 489.47,
+      "Indiabulls Real Estate": 545.88
+    }
+  },
+  "fd": {
+    "2025-06-21": {}
+  }
+}

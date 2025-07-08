@@ -1,0 +1,30 @@
+{
+  "Nippon Gold ETF": {
+    "original": 74.92,
+    "updated": 111.6
+  },
+  "HDFC Gold ETF": {
+    "original": 77.16,
+    "updated": 114.38
+  },
+  "SBI Gold ETF": {
+    "original": 77.02,
+    "updated": 125.9
+  },
+  "ICICI Prudential Nifty Next 50 ETF": {
+    "original": 300,
+    "updated": 476.14
+  },
+  "Motilal Oswal NASDAQ 100 ETF": {
+    "original": 1500,
+    "updated": 2495.23
+  },
+  "Invesco India Nifty ETF": {
+    "original": 200,
+    "updated": 326.9
+  },
+  "Nippon India Nifty 50 ETF": {
+    "original": 250,
+    "updated": 392.52
+  }
+}

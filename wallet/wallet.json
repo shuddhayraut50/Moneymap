@@ -1,0 +1,9 @@
+{
+  "wallet_balances": {
+    "total_balance": 0,
+    "withdrawable_balance": 0,
+    "returns_earned": 0,
+    "pending_returns": 0
+  },
+  "transactions": []
+}

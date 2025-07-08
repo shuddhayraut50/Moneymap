@@ -1,0 +1,173 @@
+﻿Start  
+│  
+├──> Basic Module Make  
+│       │  
+│       ├──>**Input**  
+│       │      ├── Ask user for investment type (One-time or Monthly)  
+│       │      ├── Ask for investment amount  
+│       │      ├── Ask user for risk appetite (Low, Medium, High)  
+│       │      ├── Ask user for investment duration (1 year, 2 years, etc.)  
+│       │      ├── If custom duration is chosen, ask for number of years  
+│       │      ├── Ask user if they have an emergency fund (Yes/No)  
+│       │      ├── Ask user for expected inflation rate  
+
+│       ├──> **Allocation (One-Time In vestment)**  
+│       │      ├── Check Risk Level  
+│       │      │  
+│       │      ├── **If Low Risk:**  
+│       │      │      ├── Check Emergency Fund (EF)  
+│       │      │      ├── If EF = No → Stocks (20%) | Mutual Funds (30%) | Gold ETFs (5%) | FD (45%)  
+│       │      │      ├── If EF = Yes → Stocks (30%) | Mutual Funds (40%) | Gold ETFs (10%) | FD (20%)  
+│       │      │  
+│       │      ├── **If Medium Risk:**  
+│       │      │      ├── Check Emergency Fund (EF)  
+│       │      │      ├── If EF = No → Stocks (35%) | Mutual Funds (25%) | Gold ETFs (5%) | FD (35%)  
+│       │      │      ├── If EF = Yes → Stocks (45%) | Mutual Funds (35%) | Gold ETFs (10%) | FD (10%)  
+│       │      │  
+│       │      ├── **If High Risk:**  
+│       │      │      ├── Check Emergency Fund (EF)  
+│       │      │      ├── If EF = No → Stocks (50%) | Mutual Funds (30%) | Gold ETFs (10%) | FD (10%)  
+│       │      │      ├── If EF = Yes → Stocks (60%) | Mutual Funds (30%) | Gold ETFs (10%) | FD (0%)  
+│       │      │  
+│       │      ├── **Apply Duration Multiplier**  
+│       │      │      ├── If Investment Duration ≤ 3 years → Multiply allocations by 0.90  
+│       │      │      ├── If Investment Duration > 3 years → Multiply allocations by 1.10  
+│       │  
+│       ├──> **Generate Donut/Pie Chart**  
+│       │      ├── Create a visual representation of allocation & returns  
+│       │      ├── Show percentage distribution of investments  
+│       │  
+│       ├──> **Return Calculation**  
+│       │      		├── Fetch investment allocation from previous step  
+│       │      │  
+│       │      ├── **Stocks Returns**  
+│       │      │      ├── Step 1: Check Risk Level  
+│       │      │      │      ├── Low Risk (Top 50 Companies)  
+│       │      │      │      │      ├── Lowest Loss: -1%  
+│       │      │      │      │      ├── Lowest Return: 6%  
+│       │      │      │      │      ├── Average Return: 9%  
+│       │      │      │      │      ├── Highest Return: 12%  
+│       │      │      │      │  
+│       │      │      │      ├── Medium Risk (Companies Ranked 50–200)  
+│       │      │      │      │      ├── Lowest Loss: -5%  
+│       │      │      │      │      ├── Lowest Return:9%  
+│       │      │      │      │      ├── Average Return: 12%  
+│       │      │      │      │      ├── Highest Return: 15%  
+│       │      │      │      │  
+│       │      │      │      ├── High Risk (Companies Ranked 200–500)  
+│       │      │      │      │      ├── Lowest Loss: -15.96%  
+│       │      │      │      │      ├── Lowest Return: 11%  
+│       │      │      │      │      ├── Average Return: 14%  
+│       │      │      │      │      ├── Highest Return: 18%  
+│       │      │      │  
+│       │      │      ├── Step 2: Apply Compound Interest Formula  
+│       │      │      │      ├── Formula: **FV = Investment × (1 + r) ^ t**  
+│       │      │      │      ├── Apply for each return type  
+│       │      ├── **Mutual Funds Returns**  
+│       │      │      ├── Step 1: Check Risk Level  
+│       │      │      │      ├── Low-Risk Mutual Funds (Debt, Large-Cap)  
+│       │      │      │      │      ├── Lowest Loss: -1%  
+│       │      │      │      │      ├── Lowest Return: 4%  
+│       │      │      │      │      ├── Average Return: 6%  
+│       │      │      │      │      ├── Highest Return: 10%  
+│       │      │      │      │  
+│       │      │      │      ├── Medium-Risk Mutual Funds (Balanced, Index, Mid-Cap)  
+│       │      │      │      │      ├── Lowest Loss: -5%  
+│       │      │      │      │      ├── Lowest Return: 8%  
+│       │      │      │      │      ├── Average Return: 10%  
+│       │      │      │      │      ├── Highest Return: 13%  
+│       │      │      │      │  
+│       │      │      │      ├── High-Risk Mutual Funds (Small-Cap, Sectoral, Thematic)  
+│       │      │      │      │      ├── Lowest Loss: -15%  
+│       │      │      │      │      ├── Lowest Return: 11%  
+│       │      │      │      │      ├── Average Return: 15%  
+│       │      │      │      │      ├── Highest Return: 18%  
+│       │      │      │  
+│       │      │      ├── Step 2: Apply Compound Interest Formula  
+│       │      │      │      ├── Formula: **FV = Investment × (1 + r) ^ t**  
+│       │      │      │      ├── Apply for each return type  
+│       │      │  
+│       │      ├── **Gold ETFs Returns**  
+│       │      │      ├── Step 1: Check Expected Return Rates  
+│       │      │      │      ├── Lowest Return: 5% per annum  
+│       │      │      │      ├── Average Return: 7% per annum  
+│       │      │      │      ├── Highest Return: 10% per annum  
+│       │      │      │  
+│       │      │      ├── Step 2: Apply Compound Interest Formula  
+│       │      │      │      ├── Formula: **FV = Investment × (1 + r) ^ t**  
+│       │      │      │      ├── Apply for each return type  
+│       │      │  
+│       │      ├── **FD Returns**  
+│       │      │      ├── Step 1: Get FD Investment Details  
+│       │      │      │      ├── Principal Amount (P)  
+│       │      │      │      ├── Investment Duration (t)  
+│       │      │      │  
+│       │      │      ├── Step 2: Determine Interest Calculation Method  
+│       │      │      │      ├── If FD Duration ≤ 179 days → Use Simple Interest  
+│       │      │      │      │      📌 Formula: **Interest = (P × r × t) / 365**  
+│       │      │      │      ├── If FD Duration ≥ 180 days → Use Quarterly Compounded Interest  
+│       │      │      │      │      📌 Formula: **FV = P × (1 + r/4) ^ (4 × t)**  
+│       │      │      │  
+│       │      │      ├── Step 3: Apply Interest Rate Based on FD Tenure  
+│       │      │      │      ├── ≤ 30 days → **3.00%**  
+│       │      │      │      ├── 31-45 days → **3.25%**  
+│       │      │      │      ├── 46-90 days → **3.50%**  
+│       │      │      │      ├── 91-120 days → **4.00%**  
+│       │      │      │      ├── 121-179 days → **4.25%**  
+│       │      │      │      ├── 180 days (6 months) → **7.00%**  
+│       │      │      │      ├── 181-364 days → **6.00%**  
+│       │      │      │      ├── 1-2 years → **7.10%**  
+│       │      │      │      ├── 2-3 years → **7.30%**  
+│       │      │      │      ├── 3-5 years → **7.15%**  
+│       │      │      │      ├── 5-10 years → **6.75%**
+│       │  
+│       ├──> **Tax Calculation**  
+│       │      ├── Step 1: Identify Investment Type  
+│       │      │      ├── **If Fixed Deposit (FD)**  
+│       │      │      │      ├── Check if Interest > ₹40,000 (Non-Senior) / ₹50,000 (Senior)  
+│       │      │      │      │      📌 Deduct **10% TDS** (if PAN provided)  
+│       │      │      │      │      📌 Deduct **20% TDS** (if PAN NOT provided)  
+│       │      │      │  
+│       │      │      ├── **If Stocks, Mutual Funds (MF), or Gold ETFs**  
+│       │      │      │      ├── Check Holding Period  
+│       │      │      │      │      ├── **If Held ≤ 1 Year** → Tax @ **20%** (Short-Term Capital Gains - STCG)  
+│       │      │      │      │      ├── **If Held > 1 Year** (Long-Term Capital Gains - LTCG)  
+│       │      │      │      │      │      📌 If Gains ≤ ₹1,25,000 → **Tax-Free**  
+│       │      │      │      │      │      📌 If Gains > ₹1,25,000 → **Tax @ 12.5% on Excess Amount**  
+│       │      │  
+│       │      ├── **Step 2: Compute Total Tax**  
+│       │      │      ├── Sum up all applicable taxes (TDS + STCG + LTCG)  
+│       │      │      ├── Store Total Tax Amount  
+│       │      │      ├── Deduct from Final Returns
+│       │  
+│       ├──> **Display Data**  
+│       │      ├── Show allocation, expected returns, and taxes  
+│       │      ├── Create a table with the following columns:  
+│       │      │      ├── Sr. No (Serial Number)  
+│       │      │      ├── Investment Name (Stocks, Mutual Funds, Gold ETFs, FD)  
+│       │      │      ├── Allocation (%) (Percentage of total investment)  
+│       │      │      ├── Amount (₹) (Allocated amount for each investment)  
+│       │      │      ├── Return (%) (Expected return rate)  
+│       │      │      ├── Return Amount (₹) (Final earnings before tax)  
+│       │      │      ├── Taxable Amount (₹) (Applicable taxable earnings)  
+│       │      │      ├── Tax Cut Amount (₹) (Total tax deducted)  
+│       │      ├── Populate table with investment details row-by-row  
+│       │      ├── Calculate totals for:  
+│       │      │      ├── Total Investment Amount  
+│       │      │      ├── Total Return Amount  
+│       │      │      ├── Total Tax Deducted  
+│       │      └── Provide easy-to-understand insights  
+│       │  
+│       ├──> **Final Report**  
+│       │      ├── Generate summary report  
+│       │      ├── Compile all details into a structured PDF  
+│       │      ├── Include Table, Summary, and Graphs  
+│       │      ├── Allow user to download or view details  
+│       │  
+│  
+└──> End  
+
+
+
+
+

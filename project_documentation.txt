@@ -1,0 +1,175 @@
+MoneyMap Project Documentation
+============================
+
+Project Overview
+---------------
+MoneyMap is a financial portfolio tracking application that monitors and manages various types of assets including stocks, cryptocurrencies, ETFs, mutual funds, and REITs. The project uses a client-server architecture with RESTful APIs for data transmission.
+
+Project Structure
+----------------
+1. Server Components:
+   - server.js: Main server application
+   - JSON Data Files:
+     * stocks.json: Stock market data
+     * crypto.json: Cryptocurrency data
+     * etfs.json: ETF data
+     * mutualFunds.json: Mutual fund data
+     * reits.json: REIT data
+     * history.json: Historical price data
+
+2. Client Components:
+   - test.html: Main application interface
+   - Various asset management modules
+
+API Architecture
+---------------
+1. Server Setup:
+   - Built with Express.js
+   - Running on port 3000
+   - CORS enabled for cross-origin requests
+   - JSON data handling
+
+2. API Endpoints:
+   a) Stock Management:
+      GET /get-value-stocks
+      POST /set-value-stocks
+   
+   b) Cryptocurrency Management:
+      GET /get-value-crypto
+      POST /set-value-crypto
+   
+   c) ETF Management:
+      GET /get-value-etfs
+      POST /set-value-etfs
+   
+   d) Mutual Fund Management:
+      GET /get-value-mutualfunds
+      POST /set-value-mutualfunds
+   
+   e) REIT Management:
+      GET /get-value-reits
+      POST /set-value-reits
+
+3. Data Structure:
+   Each asset is stored with:
+   {
+     "Asset Name": {
+       "original": initial_value,
+       "updated": current_value
+     }
+   }
+
+Data Flow
+---------
+1. Client-Server Communication:
+   [Client] ←→ [Express Server] ←→ [JSON Files] ←→ [History Tracking]
+
+2. Real-time Updates:
+   - Server updates asset values every 60 seconds
+   - Values change within 10% to 200% of original
+   - Daily history is automatically stored
+
+3. Data Transmission Process:
+   a) Client Request:
+      - Sends HTTP request to server
+      - Includes necessary parameters
+   
+   b) Server Processing:
+      - Validates request
+      - Processes data
+      - Updates JSON files
+   
+   c) Response:
+      - Sends updated data back to client
+      - Includes status and results
+
+Asset Management
+---------------
+1. Supported Asset Types:
+   - Stocks (e.g., HDFC Bank, Maruti Suzuki)
+   - Cryptocurrencies (e.g., Bitcoin, Ethereum)
+   - ETFs
+   - Mutual Funds
+   - REITs
+
+2. Value Management:
+   - Tracks original and current values
+   - Implements realistic price changes
+   - Maintains historical data
+
+Security Features
+----------------
+1. Input Validation:
+   - Type checking for all inputs
+   - Value range validation
+   - Error handling
+
+2. Data Protection:
+   - JSON file integrity checks
+   - Error recovery mechanisms
+   - Data backup through history tracking
+
+Usage Examples
+-------------
+1. Fetching Asset Values:
+   ```javascript
+   fetch('http://localhost:3000/get-value-stocks')
+     .then(response => response.json())
+     .then(data => console.log(data));
+   ```
+
+2. Updating Asset Values:
+   ```javascript
+   fetch('http://localhost:3000/set-value-stocks', {
+     method: 'POST',
+     headers: {
+       'Content-Type': 'application/json'
+     },
+     body: JSON.stringify({
+       name: "HDFC Bank Ltd.",
+       value: 1800
+     })
+   });
+   ```
+
+Future Enhancements
+------------------
+1. Planned Features:
+   - Real-time market data integration
+   - Advanced analytics
+   - Portfolio optimization
+   - User authentication
+   - Mobile application
+
+2. Potential Improvements:
+   - Database integration
+   - Enhanced security measures
+   - More asset types
+   - Advanced reporting features
+
+Technical Requirements
+--------------------
+1. Server Requirements:
+   - Node.js
+   - Express.js
+   - File system access
+   - JSON handling
+
+2. Client Requirements:
+   - Modern web browser
+   - JavaScript enabled
+   - Internet connection
+
+Maintenance
+----------
+1. Regular Updates:
+   - Asset value updates every minute
+   - Daily history tracking
+   - Error logging
+
+2. Data Management:
+   - Regular backups
+   - History maintenance
+   - Data validation
+
+This documentation provides a comprehensive overview of the MoneyMap project, its architecture, and how it utilizes APIs and servers for data transmission. The system is designed to be scalable and maintainable while providing real-time financial data management capabilities. 

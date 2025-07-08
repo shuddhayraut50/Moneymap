@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Portfolio Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f4f7fc;
+    color: #333;
+}
+
+.dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #1f3c72;
+}
+
+.header p {
+    font-size: 16px;
+    color: #6e7b89;
+}
+
+.main-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: linear-gradient(to right, #3e8ed0, #8a4ff2);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 30%;
+    text-align: center;
+}
+
+.stat-card h2 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.stat-card p {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.additional-info {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.info-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.info-card p {
+    font-size: 16px;
+    color: #6e7b89;
+}
+
+.info-card strong {
+    font-size: 18px;
+    color: #333;
+}
+
+
+</style>
+<body>
+
+    <div class="dashboard">
+        <header class="header">
+            <h1>Investment Portfolio</h1>
+            <p>Track your investments and returns in real-time</p>
+        </header>
+
+        <div class="main-stats">
+            <div class="stat-card">
+                <h2>Total Portfolio Value</h2>
+                <p>$125,750.5</p>
+            </div>
+            <div class="stat-card">
+                <h2>Total Return</h2>
+                <p>$25,750.5</p>
+            </div>
+            <div class="stat-card">
+                <h2>Return Percentage</h2>
+                <p>+25.75%</p>
+            </div>
+        </div>
+
+        <div class="additional-info">
+            <div class="info-card">
+                <p><strong>Total Invested</strong></p>
+                <p>$100,000</p>
+            </div>
+            <div class="info-card">
+                <p><strong>Number of Holdings</strong></p>
+                <p>6</p>
+            </div>
+            <div class="info-card">
+                <p><strong>Best Performer</strong></p>
+                <p>NVDA (+34.71%)</p>
+            </div>
+            <div class="info-card">
+                <p><strong>Portfolio Diversity</strong></p>
+                <p>6 Assets</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

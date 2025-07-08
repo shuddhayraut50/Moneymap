@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment Options</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="./payment.css">
+</head>
+<style>
+    body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #f8f9ff 0%, #e6f0ff 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.payment_container {
+    background: rgba(255, 255, 255, 0.98);
+    padding: 2.5rem;
+    border-radius: 24px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transform: translateY(0);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+}
+
+#qrcode {
+    margin: 20px auto;
+    padding: 24px;
+    background: linear-gradient(145deg, #ffffff, #f8f9ff);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    display: block;
+    width: fit-content;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+#qrcode:hover {
+    transform: scale(1.02);
+}
+
+.upi-instruction {
+    color: #2c3e50;
+    margin: 0 auto 20px;
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: center;
+    max-width: 320px;
+    padding: 0 15px;
+    font-weight: 450;
+    opacity: 0.9;
+}
+
+.upi-info {
+    padding: 18px;
+    background: linear-gradient(145deg, #f8f9fa, #ffffff);
+    border-radius: 14px;
+    font-size: 0.95rem;
+    color: #2c3e50;
+    margin: 20px auto 0;
+    max-width: 320px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.note {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 20px 0;
+    opacity: 0.8;
+}
+
+#upiSection {
+    text-align: center;
+    position: relative;
+}
+
+input, button {
+    width: 100%;
+    padding: 14px 20px;
+    margin: 10px 0;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+input:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.15);
+    background: rgba(255, 255, 255, 1);
+}
+
+button {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    letter-spacing: 0.25px;
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #45a049, #3d8b40);
+    transform: translateY(-1px);
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+button:hover::after {
+    opacity: 1;
+}
+.payment-section {
+    display: none;
+    animation: fadeIn 0.4s ease forwards;
+    padding: 20px 24px;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    margin: 24px 0;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.change-method {
+    color: #4CAF50;
+    cursor: pointer;
+    margin: 20px 0;
+    display: none;
+    font-weight: 500;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.change-method:hover {
+    color: #3d8b40;
+    text-decoration: underline;
+}
+
+.amount-display {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    letter-spacing: -0.5px;
+}
+
+/* New micro-interactions */
+#upiId {
+    font-weight: 500;
+    color: #2c3e50;
+    letter-spacing: 0.5px;
+    position: relative;
+    padding: 2px 4px;
+    border-radius: 4px;
+    background: rgba(76, 175, 80, 0.1);
+}
+
+#upiId::after {
+    content: '📱';
+    margin-left: 8px;
+    filter: grayscale(0.5);
+}
+
+/* Add this to your existing CSS */
+body {
+    /* ... existing body styles ... */
+    overflow-x: hidden;
+}
+
+.container {
+    /* ... existing container styles ... */
+    animation: containerEntrance 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+@keyframes containerEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+#qrcode {
+    /* ... existing qrcode styles ... */
+    animation: qrAppear 0.4s 0.2s ease-out both;
+}
+
+@keyframes qrAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+button {
+    /* ... existing button styles ... */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.payment-section {
+    animation: sectionSlide 0.4s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+@keyframes sectionSlide {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.change-method {
+    animation: fadeInUp 0.4s 0.2s ease-out both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.upi-info {
+    animation: infoExpand 0.6s 0.3s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+@keyframes infoExpand {
+    from {
+        opacity: 0;
+        transform: scaleY(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+input:focus {
+    /* ... existing focus styles ... */
+    animation: inputFocus 0.4s ease-out;
+}
+
+@keyframes inputFocus {
+    from {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+    }
+    to {
+        transform: scale(1.005);
+        box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.15);
+    }
+}
+
+/* Add shimmer effect to UPI ID */
+#upiId {
+    position: relative;
+    overflow: hidden;
+}
+
+#upiId::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    100% {
+        left: 200%;
+    }
+}
+
+/* Add success animation */
+@keyframes successCheck {
+    0% {
+        transform: scale(0);
+    }
+    80% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.success-check {
+    animation: successCheck 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55) both;
+}
+.card-amount-display {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-weight: 500;
+  }
+
+
+  /* Base hidden state */
+#popup {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    font-size: 17px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+    max-width: 90%;
+    text-align: center;
+  }
+  
+  /* Visible state */
+  #popup.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+  }
+  
+  /* Fade‑out helper */
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+  }
+  #popup.hide {
+    animation: fadeOut 0.3s ease forwards;
+  }
+  
+</style>
+
+<body>
+  <div class="payment_container">
+    <h2>Make a Payment</h2>
+    <div id="methodButtons">
+      <p>Select Payment Method:</p>
+      <button data-method="upi">UPI</button>
+      <button data-method="card">Card</button>
+    </div>
+
+    <div id="changeMethod" class="change-method">← Change Payment Method</div>
+
+    <!-- UPI Payment Section -->
+    <div class="payment-section" id="upiSection">
+      <p class="upi-instruction">Scan QR code using any UPI app</p>
+      <div id="qrcode"></div>
+      <div class="upi-info">
+        UPI ID: <span id="upiId">shuddhayraut777@okhdfcbank</span><br>
+        Amount: ₹<span id="upiAmount"></span>
+      </div>
+    </div>
+
+    <!-- Card Payment Section -->
+    <div class="payment-section" id="cardSection">
+      <h2>Card Payment</h2>
+      <div class="card-amount-display">
+        Amount: ₹<span id="cardAmount"></span>
+      </div>
+      <div>
+        <label for="cardNumber">Card Number:</label>
+        <input type="text" id="cardNumber" maxlength="19" placeholder="xxxx xxxx xxxx xxxx"
+          aria-label="Enter your card number">
+        <span class="error" id="cardNumberError" style="display: none;">Invalid card number</span>
+      </div>
+      <div>
+        <label for="expiryDate">Expiry Date (MM/YY):</label>
+        <input type="text" id="expiryDate" maxlength="5" placeholder="MM/YY"
+          aria-label="Enter expiry date in MM/YY format">
+        <span class="error" id="expiryDateError" style="display: none;">Invalid expiry date</span>
+      </div>
+      <div>
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" maxlength="3" placeholder="CVV" aria-label="Enter CVV">
+        <span class="error" id="cvvError" style="display: none;">Invalid CVV</span>
+      </div>
+      <button id="cardSubmitBtn">Submit Payment</button>
+    </div>
+  </div>
+  <!-- Popup Modal -->
+  <div id="popup"></div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="../src/investment.js"></script>
+  <script>
+    let storedAmount = "1000"; // Default amount set to ₹1000
+    let qrCodeInstance = null;
+
+    // Utility: show a floating popup message
+    function showPopup(message, duration = 3000) {
+      const popup = document.getElementById('popup');
+      popup.textContent = message;
+
+      if (popup._hideTimeout) {
+        clearTimeout(popup._hideTimeout);
+      }
+
+      popup.classList.remove('hide');
+      popup.classList.add('show');
+
+      popup._hideTimeout = setTimeout(() => {
+        popup.classList.remove('show');
+        popup.classList.add('hide');
+      }, duration);
+    }
+
+    const paymentConfig = {
+      upiId: 'shuddhayraut777@okhdfcbank'
+    };
+
+    // Element refs
+    const methodButtons = document.getElementById('methodButtons');
+    const upiSection = document.getElementById('upiSection');
+    const cardSection = document.getElementById('cardSection');
+    const qrCodeContainer = document.getElementById('qrcode');
+    const cardNumberInput = document.getElementById('cardNumber');
+    const expiryDateInput = document.getElementById('expiryDate');
+
+    // Listeners
+    document.querySelectorAll('#methodButtons button')
+      .forEach(btn => btn.addEventListener('click', handlePaymentMethodSelect));
+    document.getElementById('cardSubmitBtn')
+      .addEventListener('click', handleCardSubmit);
+
+    // Format card number with spaces (xxxx xxxx xxxx xxxx)
+    cardNumberInput.addEventListener('input', () => {
+      let value = cardNumberInput.value.replace(/\D/g, ''); // Remove non-digit characters
+      value = value.match(/.{1,4}/g)?.join(' ') || value; // Add spaces every 4 digits
+      cardNumberInput.value = value;
+    });
+
+    // Format expiry date with a slash (MM/YY)
+    expiryDateInput.addEventListener('input', () => {
+      let value = expiryDateInput.value.replace(/\D/g, ''); // Remove non-digit characters
+      if (value.length > 2) {
+        value = value.slice(0, 2) + '/' + value.slice(2, 4); // Add slash after MM
+      }
+      expiryDateInput.value = value.slice(0, 5); // Limit to MM/YY format
+    });
+
+    // Show payment options on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('upiAmount').textContent = storedAmount;
+      document.getElementById('cardAmount').textContent = storedAmount;
+    });
+
+    function handlePaymentMethodSelect(e) {
+      const method = e.target.dataset.method;
+      document.querySelectorAll('.payment-section').forEach(s => s.style.display = 'none');
+
+      if (method === 'upi') {
+        showUPIPayment();
+      } else if (method === 'card') {
+        showCardPayment();
+      }
+    }
+
+    function showUPIPayment() {
+      if (qrCodeInstance) {
+        qrCodeContainer.innerHTML = '';
+        qrCodeInstance = null;
+      }
+      const upiUrl = `upi://pay?pa=${paymentConfig.upiId}&am=${storedAmount}`;
+      qrCodeInstance = new QRCode(qrCodeContainer, {
+        text: upiUrl, width: 200, height: 200,
+        colorDark: '#000', colorLight: '#fff'
+      });
+      upiSection.style.display = 'block';
+    }
+
+    function showCardPayment() {
+      cardSection.style.display = 'block';
+    }
+
+    function handleCardSubmit() {
+      const num = cardNumberInput.value.replace(/\s/g, '');
+      const exp = expiryDateInput.value;
+      const cvv = document.getElementById('cvv').value;
+      let valid = true;
+
+      document.getElementById('cardNumberError').style.display = 'none';
+      document.getElementById('expiryDateError').style.display = 'none';
+      document.getElementById('cvvError').style.display = 'none';
+
+      // Validate card number
+      if (!/^\d{16}$/.test(num)) {
+        showPopup('Invalid card number', 3000); // Show popup for invalid card number
+        document.getElementById('cardNumberError').style.display = 'block';
+        valid = false;
+      }
+
+      // Validate expiry date
+      const [m, y] = exp.split('/').map(x => parseInt(x, 10));
+      const nowY = new Date().getFullYear() % 100;
+      const nowM = new Date().getMonth() + 1;
+      if (!/^\d{2}\/\d{2}$/.test(exp) || m < 1 || m > 12 || y < nowY || (y === nowY && m < nowM)) {
+        showPopup('Invalid expiry date', 3000); // Show popup for invalid expiry date
+        document.getElementById('expiryDateError').style.display = 'block';
+        valid = false;
+      }
+
+      // Validate CVV
+      if (!/^\d{3}$/.test(cvv)) {
+        showPopup('Invalid CVV', 3000); // Show popup for invalid CVV
+        document.getElementById('cvvError').style.display = 'block';
+        valid = false;
+      }
+
+      // If all validations pass
+      if (valid) {
+        showPopup(`Payment of ₹${storedAmount} successful!`, 3500);
+        storePaymentData('Card');
+        setTimeout(() => {
+          window.location.href = './dashboard.html';
+        }, 1000);
+      }
+    }
+
+    function storePaymentData(method) {
+      const rec = { amount: storedAmount, method, date: new Date().toISOString() };
+      const arr = JSON.parse(localStorage.getItem('payments') || '[]');
+      arr.push(rec);
+      localStorage.setItem('payments', JSON.stringify(arr));
+    }
+  </script>
+
+
+</body>
+
+</html>

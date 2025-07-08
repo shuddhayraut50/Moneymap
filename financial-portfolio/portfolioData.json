@@ -1,0 +1,128 @@
+{
+    "users": {
+        "default": {
+            "portfolioMetadata": {
+                "lastUpdated": "2025-06-07",
+                "currency": "INR",
+                "riskProfile": "Moderate",
+                "targetAllocation": {
+                    "Stocks": 35,
+                    "Mutual Funds": 25,
+                    "Fixed Deposits": 15,
+                    "ETF": 10,
+                    "Real Estate": 10,
+                    "Cryptocurrency": 5                }
+            },
+            "portfolioItems": [
+                {
+                    "name": "Tata Consultancy Services",
+                    "type": "Stocks",
+                    "icon": "📈",
+                    "quantity": 10,
+                    "purchasePrice": 3200,
+                    "currentPrice": 3500,
+                    "currentValue": 35000
+                },
+                {
+                    "name": "Reliance Industries",
+                    "type": "Stocks",
+                    "icon": "📈",
+                    "quantity": 15,
+                    "purchasePrice": 2100,
+                    "currentPrice": 2450,
+                    "currentValue": 36750
+                },
+                {
+                    "name": "HDFC Bank",
+                    "type": "Stocks",
+                    "icon": "📈",
+                    "quantity": 20,
+                    "purchasePrice": 1450,
+                    "currentPrice": 1550,
+                    "currentValue": 31000
+                },
+                {
+                    "name": "Axis Bluechip Fund",
+                    "type": "Mutual Funds",
+                    "icon": "🟢",
+                    "quantity": 500,
+                    "purchasePrice": 42,
+                    "currentPrice": 46,
+                    "currentValue": 23000
+                },
+                {
+                    "name": "Mirae Asset Emerging Bluechip",
+                    "type": "Mutual Funds",
+                    "icon": "🟢",
+                    "quantity": 300,
+                    "purchasePrice": 80,
+                    "currentPrice": 92,
+                    "currentValue": 27600
+                },
+                {
+                    "name": "SBI Small Cap Fund",
+                    "type": "Mutual Funds",
+                    "icon": "🟢",
+                    "quantity": 200,
+                    "purchasePrice": 65,
+                    "currentPrice": 75,
+                    "currentValue": 15000
+                },
+                {
+                    "name": "HDFC Bank FD",
+                    "type": "Fixed Deposits",
+                    "icon": "🏦",
+                    "quantity": 1,
+                    "purchasePrice": 50000,
+                    "currentPrice": 50000,
+                    "currentValue": 50000
+                },
+                {
+                    "name": "SBI Fixed Deposit",
+                    "type": "Fixed Deposits",
+                    "icon": "🏦",
+                    "quantity": 1,
+                    "purchasePrice": 50000,
+                    "currentPrice": 53250,
+                    "currentValue": 53250
+                },
+                {
+                    "name": "Gold ETF",
+                    "type": "ETF",
+                    "icon": "🪙",
+                    "quantity": 100,
+                    "purchasePrice": 400,
+                    "currentPrice": 500,
+                    "currentValue": 50000
+                },
+                {
+                    "name": "Real Estate Investment Trust",
+                    "type": "Real Estate",
+                    "icon": "🏢",
+                    "quantity": 10,
+                    "purchasePrice": 1000,
+                    "currentPrice": 1200,
+                    "currentValue": 12000
+                },
+                {
+                    "name": "Bitcoin",
+                    "type": "Cryptocurrency",
+                    "icon": "₿",
+                    "quantity": 0.5,
+                    "purchasePrice": 300000,
+                    "currentPrice": 700000,
+                    "currentValue": 350000
+                },
+                {
+                    "name": "Ethereum",
+                    "type": "Cryptocurrency",
+                    "icon": "Ξ",
+                    "quantity": 2,
+                    "purchasePrice": 200000,
+                    "currentPrice": 225000,
+                    "currentValue": 450000
+                }
+            ]
+        }
+    }
+}

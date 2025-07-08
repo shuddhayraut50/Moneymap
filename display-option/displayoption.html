@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="displayoption.css">
+    <link rel="stylesheet" href="performance.css">
+    <link rel="stylesheet" href="news.css">
+    <link rel="stylesheet" href="dividends.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Financial Portfolio</title>
+</head>
+<style>
+    
+</style>
+<body>
+    <header class="main-header">
+        <span class="main-title">Financial Portfolio</span>
+        <!-- Auth buttons container -->
+        <div id="auth-buttons" style="position: absolute; top: 20px; right: 20px; display: flex; align-items: center; gap: 10px;">
+            <!-- User info (shown when authenticated) - LEFT SIDE -->
+            <div id="user-info" class="hidden" style="display: flex; align-items: center; gap: 5px; background-color: #dcfce7; color: #166534; padding: 8px 12px; border-radius: 8px; font-size: 14px; font-weight: 500;">
+                <span class="material-icons" style="font-size: 16px;">person</span>
+                <span id="username-display"></span>
+            </div>
+            <!-- Login button (shown when not authenticated) -->
+            <button
+              id="login-btn"
+              class="hidden"
+              style="display: flex; align-items: center; gap: 5px; padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 14px; transition: all 0.3s ease; border: none; cursor: pointer; background-color: #3b82f6; color: white;"
+              onclick="window.location.href='../user/login.html'"
+            >
+              <span class="material-icons" style="font-size: 16px;">login</span>
+              Login
+            </button>
+            <!-- Logout button (shown when authenticated) - RIGHT SIDE -->
+            <button
+              id="logout-btn"
+              class="hidden"
+              style="display: flex; align-items: center; gap: 5px; padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 14px; transition: all 0.3s ease; border: none; cursor: pointer; background-color: #ef4444; color: white;"
+              onclick="handleLogout()"
+            >
+              <span class="material-icons" style="font-size: 16px;">logout</span>
+              Logout
+            </button>
+        </div>
+    </header>
+    <div class="container">        <header class="portfolio-header">
+            <a href="../financial-portfolio/FinancialPortfolio.html" class="back-link">Back to Portfolio Overview</a>
+            <button class="sell-assets">Sell Assets</button>
+        </header>
+
+        <main>
+            <div class="portfolio-summary">
+                <div>
+                    <h2 id="assetName"></h2>
+                    <div class="subtitle" id="assetType"></div>
+                </div>
+                <div class="current-value-summary">
+                    <div class="label">Current Value</div>
+                    <div class="value" id="currentValue"></div>
+                    <div class="change positive" id="change"></div>
+                </div>
+            </div>
+
+            <nav class="tabs">
+                <button class="tab active" data-tab="overview">Overview</button>
+                <button class="tab" data-tab="performance">Performance</button>
+                <button class="tab" data-tab="news">News & Analysis</button>
+                <button class="tab" data-tab="dividends">Dividends</button>
+            </nav>
+
+            <div class="tab-content" id="overview-tab">
+                <div class="details-cards">
+                    <div class="card">
+                        <div class="card-title">Investment Details</div>
+                        <div class="card-row">
+                            <div class="card-label">Quantity</div>
+                            <div class="card-value" id="quantity">Loading...</div>
+                        </div>
+                        <div class="card-row">
+                            <div class="card-label">Purchase Price</div>
+                            <div class="card-value" id="purchasePrice">Loading...</div>
+                        </div>
+                        <div class="card-row">
+                            <div class="card-label">Purchase Date</div>
+                            <div class="card-value" id="purchaseDate">Loading...</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">Current Status</div>
+                        <div class="card-row">
+                            <div class="card-label">Current Price</div>
+                            <div class="card-value" id="currentPrice">Loading...</div>
+                        </div>
+                        <div class="card-row">
+                            <div class="card-label">Total Cost</div>
+                            <div class="card-value" id="totalCost">Loading...</div>
+                        </div>
+                        <div class="card-row">
+                            <div class="card-label">Current Value</div>
+                            <div class="card-value" id="totalValue">Loading...</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">Performance</div>
+                        <div class="card-row">
+                            <div class="card-label">Price Change</div>
+                            <div class="card-value" id="priceChange">Loading...</div>
+                        </div>
+                        <div class="card-row">
+                            <div class="card-label">Profit/Loss</div>
+                            <div class="card-value" id="profitLoss">Loading...</div>
+                        </div>
+                        <div class="card-row">
+                            <div class="card-label">Interest Rate</div>
+                            <div class="card-value" id="interestRate">Loading...</div>
+                        </div>
+                        <div class="card-row">
+                            <div class="card-label">Maturity Date</div>
+                            <div class="card-value" id="maturityDate">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+<h3>Performance Overview</h3>
+            <div class="chart-container">
+                <canvas id="overviewChart" width="1800" height="600"></canvas>
+            </div>
+                <div class="action-buttons">
+                    <button class="set-price-alert">Set Price Alert</button>
+                    <button class="sell-investment">Sell Investment</button>
+                </div>
+                <div id="portfolio-container"></div>
+            </div>
+
+            <div class="tab-content" id="performance-tab" style="display:none;">
+                <div class="performance-section">
+                    <div class="performance-title">Historical Performance</div>
+                    <div class="chart-actions" style="margin-bottom: 12px;">
+                        <button class="chart-btn active" data-period="1m">1M</button>
+                        <button class="chart-btn" data-period="3m">3M</button>
+                        <button class="chart-btn" data-period="6m">6M</button>
+                        <button class="chart-btn" data-period="1y">1Y</button>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="performanceChart" width="900" height="320"></canvas>
+                    </div>
+                    <div class="performance-summary">
+                        <div class="performance-summary-card">
+                            <div class="label">1 Month Return</div>
+                            <div class="value" id="performance-summary-1m"></div>
+                        </div>
+                        <div class="performance-summary-card">
+                            <div class="label">1 Year Return</div>
+                            <div class="value" id="performance-summary-1y"></div>
+                        </div>
+                        <div class="performance-summary-card">
+                            <div class="label">Since Purchase</div>
+                            <div class="value" id="performance-summary-since"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="news-tab" style="display:none;">
+                <main>
+                    <h2>Latest News & Analysis</h2>
+                    <div class="news-list">
+                        <div class="news-card">
+                            <div class="news-title">SBI Fixed Deposit Reports Strong Q2 Results</div>
+                            <div class="news-date">5/7/2025</div>
+                            <div class="news-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                            <a href="#" class="news-link">Read more</a>
+                        </div>
+                        <div class="news-card">
+                            <div class="news-title">SBI Fixed Deposit Announces New Product Line</div>
+                            <div class="news-date">5/6/2025</div>
+                            <div class="news-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                            <a href="#" class="news-link">Read more</a>
+                        </div>
+                        <div class="news-card">
+                            <div class="news-title">SBI Fixed Deposit Expands to International Markets</div>
+                            <div class="news-date">5/5/2025</div>
+                            <div class="news-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                            <a href="#" class="news-link">Read more</a>
+                        </div>
+                    </div>
+
+                    <h3>Analyst Recommendations</h3>
+                    <div class="analyst-section">
+                        <div class="analyst-consensus">
+                            <span class="label">Consensus</span>
+                            <span class="value positive">Buy</span>
+                        </div>
+                        <div class="analyst-bar-container">
+                            <div class="analyst-bar" style="width:70%;"></div>
+                            <span class="analyst-bar-label">70%</span>
+                        </div>
+                        <div class="analyst-breakdown">
+                            <span>Buy <b>7</b></span>
+                            <span>Hold <b>2</b></span>
+                            <span>Sell <b>1</b></span>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons" style="margin-top:32px;">
+                        <button class="set-price-alert">Set Price Alert</button>
+                        <button class="sell-investment">Sell Investment</button>
+                    </div>
+                </main>
+            </div>
+
+            <div class="tab-content" id="dividends-tab" style="display:none;">
+                <main>
+                    <h2>Dividend History</h2>
+                    <div class="dividend-history-card">
+                        No dividend information available for this investment type.
+                    </div>
+                    <div class="action-buttons" style="margin-top:32px;">
+                        <button class="set-price-alert">Set Price Alert</button>
+                        <button class="sell-investment">Sell Investment</button>
+                    </div>
+                </main>
+            </div>
+        </main>
+    </div>    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./portfolioData.js"></script>
+    <script src="./tabs.js"></script>
+    <script src="./displayoption.js"></script>
+    <script src="performance.js"></script>
+    <script src="news.js"></script>
+    <script src="dividends.js"></script>
+    <script src="../completed/auth.js"></script>
+    <script>
+   
+    </script>
+</body>
+</html>

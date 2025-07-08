@@ -1,0 +1,9 @@
+.dividend-history-card {
+    background: #f7fafd;
+    border-radius: 12px;
+    padding: 40px 24px;
+    margin: 32px 0 0 0;
+    text-align: center;
+    color: #888;
+    font-size: 1.15rem;
+}

@@ -1,0 +1,468 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f6fa;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.main-header {
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 2rem 1.2rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+.main-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #22223b;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #22223b;
+    margin: 0;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    color: #2563eb;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: rgba(37, 99, 235, 0.1);
+}
+
+.back-link:hover {
+    background: rgba(37, 99, 235, 0.15);
+    transform: translateX(-3px);
+}
+
+.back-link::before {
+    content: "←";
+    margin-right: 8px;
+    font-size: 1.2em;
+    line-height: 1;
+    transition: transform 0.2s ease;
+}
+
+.back-link:hover::before {
+    transform: translateX(-3px);
+}
+
+.sell-assets {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.sell-assets:hover {
+    background: #1d4ed8;
+}
+
+main {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    padding: 2rem;
+}
+
+main h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: #22223b;
+}
+
+main h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 2rem 0 1rem 0;
+    color: #22223b;
+}
+
+.details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.details > div {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 1.25rem 1rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+}
+
+.details h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #3b3b3b;
+}
+
+.details p {
+    margin: 0.3rem 0;
+    color: #444;
+    font-size: 1rem;
+}
+
+.details span {
+    font-weight: 600;
+    color: #22223b;
+}
+
+.positive {
+    color: #16a34a;
+    font-weight: 600;
+}
+
+.negative {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+canvas {
+    display: block;
+    max-width: 100%;
+    margin: 1.5rem 0 2rem 0;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    justify-content: flex-end;
+}
+
+.action-buttons button {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.1);
+}
+
+.action-buttons button:hover {
+    background: linear-gradient(135deg, #1d4ed8, #1e40af);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+}
+
+.action-buttons button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.1);
+}
+
+.set-price-alert {
+    padding: 0.5rem 1.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background: #fff;
+    color: #2563eb;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.set-price-alert:hover {
+    background: #f1f5f9;
+    color: #1d4ed8;
+}
+
+.sell-investment {
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    background: #dc2626;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.sell-investment:hover {
+    background: #b91c1c;
+}
+
+.portfolio-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.portfolio-header .back-link {
+    color: #2563eb;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-left: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.portfolio-header .sell-assets {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.portfolio-header .sell-assets:hover {
+    background: #1d4ed8;
+}
+
+.portfolio-summary {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.portfolio-summary .subtitle {
+    color: #6b7280;
+    font-size: 1rem;
+    margin-top: 0.2rem;
+}
+
+.current-value-summary {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    min-width: 180px;
+    text-align: right;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+}
+
+.current-value-summary .label {
+    color: #6b7280;
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+}
+
+.current-value-summary .value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #22223b;
+}
+
+.current-value-summary .change {
+    font-size: 1rem;
+    margin-top: 0.2rem;
+}
+
+.tabs {
+    display: flex;
+    gap: 2rem;
+    border-bottom: 1.5px solid #e5e7eb;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+}
+
+.tab {
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #6b7280;
+    padding: 0.7rem 0;
+    cursor: pointer;
+    border-bottom: 2.5px solid transparent;
+    transition: color 0.2s, border-bottom 0.2s;
+}
+
+.tab.active {
+    color: #2563eb;
+    border-bottom: 2.5px solid #2563eb;
+    background: none;
+}
+
+.details-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 1.5rem 1.5rem 1.2rem 1.5rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.asset-section {
+    width: 100%;
+}
+
+.card-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.7rem;
+}
+
+.card-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 0.2rem;
+}
+
+.card-label {
+    color: #6b7280;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 0.1rem;
+}
+
+.card-value {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 0.2rem;
+}
+
+.positive {
+    color: #16a34a;
+    font-weight: 600;
+}
+
+.negative {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+}
+
+/* Overview chart container specific styles */
+#overview-tab .chart-container {
+    height: min(60vh, 400px);
+}
+
+/* Performance chart container specific styles */
+#performance-tab .chart-container {
+    height: min(50vh, 320px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .chart-container {
+        padding: 12px;
+        margin: 16px 0;
+    }
+
+    #overview-tab .chart-container,
+    #performance-tab .chart-container {
+        height: min(70vh, 300px);
+    }
+}
+
+/* Make sure canvas takes full size of container */
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 800px) {
+    .portfolio-summary {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .details-cards {
+        flex-direction: column;
+    }
+    .current-value-summary {
+        text-align: left;
+        min-width: unset;
+    }
+}
+
+@media (max-width: 900px) {
+    .details-cards {
+        grid-template-columns: 1fr;
+    }
+    .card-row {
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+}
+
+.main-header {
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 2rem 1.2rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.main-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #22223b;
+}

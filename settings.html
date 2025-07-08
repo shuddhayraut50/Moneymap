@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MoneyMap - Manage your account settings and preferences for better financial planning">
+    <title>MoneyMap Settings</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/logo.svg">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="./assets/logo.svg" alt="MoneyMap Logo" width="30" height="30">
+                <span>MoneyMap</span>
+            </div>
+            <span id="current-user-info" style="font-size:14px;color:#1890ff;font-weight:500;margin-left:16px;"></span>
+            <nav aria-label="Main navigation">
+                <ul>
+                    <li><a href="#" aria-label="View notifications"><img src="./assets/bell.svg" alt="Notifications" width="24" height="24"></a></li>
+                    <li><a href="#" aria-label="View history"><img src="./assets/clock.svg" alt="History" width="24" height="24"></a></li>
+                    <li><a href="#" aria-label="View settings" aria-current="page"><img src="./assets/settings.svg" alt="Settings" width="24" height="24"></a></li>
+                    <li><a href="#" aria-label="View profile"><img src="./assets/user.svg" alt="Profile" width="24" height="24"></a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <h1>Settings</h1>
+            <p>Manage your account settings and preferences</p>
+
+            <!-- Profile Overview -->
+            <section class="card profile-overview">
+                <div class="card-header">
+                    <h2>Profile Overview</h2>
+                    <button class="btn-edit" aria-label="Edit profile information">Edit Profile</button>
+                </div>
+                <div class="card-content">
+                    <div class="profile-info">
+                        <div class="avatar" role="img" aria-label="Profile avatar"></div>
+                        <div>
+                            <h3 id="profile-name-display">John Doe</h3>
+                            <p id="profile-username-display">@johndoe</p>
+                            <p id="profile-email-display">john.doe@email.com</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Personal Information -->
+            <section class="card personal-info">
+                <div class="card-header">
+                    <h2>Personal Information</h2>
+                    <button class="btn-edit" aria-label="Edit personal information">Edit</button>
+                </div>
+                <div class="card-content">
+                    <p>Update your personal details</p>
+                    <div class="form-group">
+                        <label for="personal-full-name">Full Name</label>
+                        <p id="personal-full-name">John Doe</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="personal-email">Email Address</label>
+                        <p id="personal-email">john.doe@email.com</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="personal-phone">Phone Number</label>
+                        <p id="personal-phone">+1 (555) 123-4567</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="personal-birth-date">Birth Date</label>
+                        <p id="personal-birth-date">01/01/1990</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Security -->
+            <section class="card security">
+                <div class="card-header">
+                    <h2>Security</h2>
+                </div>
+                <div class="card-content">
+                    <p>Manage your account security settings</p>
+                    <form id="password-form">
+                        <h3>Change Password</h3>
+                        <div class="form-group">
+                            <label for="security-current-password">Current Password</label>
+                            <input type="password" id="security-current-password" name="current-password" placeholder="Enter current password" required minlength="8">
+                        </div>
+                        <div class="form-group">
+                            <label for="security-new-password">New Password</label>
+                            <input type="password" id="security-new-password" name="new-password" placeholder="Enter new password" required minlength="8" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
+                        </div>
+                        <div class="form-group">
+                            <label for="security-confirm-password">Confirm Password</label>
+                            <input type="password" id="security-confirm-password" name="confirm-password" placeholder="Confirm new password" required minlength="8">
+                        </div>
+                        <button type="submit" class="btn-primary">Update Password</button>
+                    </form>
+
+                    <h3>Two-Factor Authentication</h3>
+                    <p>Add an extra layer of security to your account</p>
+                    <button class="btn-enable" aria-label="Enable two-factor authentication">Enable</button>
+
+                    <h3>Active Sessions</h3>
+                    <p>Last login: Today at 2:30 PM</p>
+                    <button class="btn-logout" aria-label="Logout from all devices">Logout All Devices</button>
+                </div>
+            </section>
+
+            <!-- Investment Preferences -->
+            <section class="card investment-preferences">
+                <div class="card-header">
+                    <h2>Investment Preferences</h2>
+                </div>
+                <div class="card-content">
+                    <p>Configure your investment strategy defaults</p>
+                    <form id="investment-form">
+                        <div class="form-group">
+                            <label for="investment-risk-appetite">Risk Appetite</label>
+                            <select id="investment-risk-appetite" name="risk-appetite" required>
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="investment-type">Investment Type</label>
+                            <select id="investment-type" name="investment-type" required>
+                                <option value="monthly" selected>Monthly</option>
+                                <option value="quarterly">Quarterly</option>
+                                <option value="yearly">Yearly</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="investment-inflation-rate">Expected Inflation Rate (%)</label>
+                            <input type="number" id="investment-inflation-rate" name="inflation-rate" value="3.5" min="0" max="100" step="0.1" required>
+                        </div>
+                        <div class="form-group">
+                            <fieldset>
+                                <legend>Emergency Fund</legend>
+                                <div class="radio-group">
+                                    <input type="radio" id="emergency-fund-yes" name="emergency-fund" value="yes" checked>
+                                    <label for="emergency-fund-yes">Yes</label>
+                                    <input type="radio" id="emergency-fund-no" name="emergency-fund" value="no">
+                                    <label for="emergency-fund-no">No</label>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <button type="submit" class="btn-save">Save Preferences</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Appearance & Display -->
+            <section class="card appearance-display">
+                <div class="card-header">
+                    <h2>Appearance & Display</h2>
+                </div>
+                <div class="card-content">
+                    <p>Customize your visual experience</p>
+                    <div class="form-group">
+                        <h3>Dark Mode</h3>
+                        <p>Switch between light and dark themes</p>
+                        <label class="switch" for="appearance-dark-mode">
+                            <input type="checkbox" id="appearance-dark-mode" aria-label="Toggle dark mode">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="appearance-language">Language</label>
+                        <select id="appearance-language" name="language" aria-label="Select language">
+                            <option value="en" selected>English</option>
+                            <option value="es">Español</option>
+                            <option value="fr">Français</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <h3>Font Size</h3>
+                        <div class="font-size-options" role="radiogroup" aria-label="Font size options">
+                            <button type="button" class="btn-font-size active" aria-pressed="true" data-size="small" id="font-size-small">Small</button>
+                            <button type="button" class="btn-font-size" aria-pressed="false" data-size="medium" id="font-size-medium">Medium</button>
+                            <button type="button" class="btn-font-size" aria-pressed="false" data-size="large" id="font-size-large">Large</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Notifications -->
+            <section class="card notifications">
+                <div class="card-header">
+                    <h2>Notifications</h2>
+                </div>
+                <div class="card-content">
+                    <p>Manage your notification preferences</p>
+                    <div class="form-group">
+                        <h3>Email Notifications</h3>
+                        <p>Receive notifications via email</p>
+                        <label class="switch" for="notifications-email">
+                            <input type="checkbox" id="notifications-email" checked aria-label="Toggle email notifications">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notifications-summary-frequency">Investment Summary Frequency</label>
+                        <select id="notifications-summary-frequency" name="summary-frequency" aria-label="Select investment summary frequency">
+                            <option value="daily">Daily</option>
+                            <option value="weekly" selected>Weekly</option>
+                            <option value="monthly">Monthly</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <h3>Alert Preferences</h3>
+                        <div class="alert-preferences">
+                            <div class="alert-option">
+                                <label class="switch" for="notifications-returns">
+                                    <input type="checkbox" id="notifications-returns" checked aria-label="Toggle returns and performance alerts">
+                                    <span class="slider round"></span>
+                                </label>
+                                <span>Returns and Performance Alerts</span>
+                            </div>
+                            <div class="alert-option">
+                                <label class="switch" for="notifications-tax">
+                                    <input type="checkbox" id="notifications-tax" checked aria-label="Toggle tax-related alerts">
+                                    <span class="slider round"></span>
+                                </label>
+                                <span>Tax-related Alerts</span>
+                            </div>
+                            <div class="alert-option">
+                                <label class="switch" for="notifications-payment">
+                                    <input type="checkbox" id="notifications-payment" aria-label="Toggle payment status alerts">
+                                    <span class="slider round"></span>
+                                </label>
+                                <span>Payment Status Alerts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Danger Zone -->
+            <section class="card danger-zone">
+                <div class="card-header">
+                    <h2>Danger Zone</h2>
+                </div>
+                <div class="card-content">
+                    <p>Irreversible and destructive actions</p>
+                    <h3>Export My Data</h3>
+                    <p>Download a copy of your data in CSV format</p>
+                    <button class="btn-export" aria-label="Export account data">Export Data</button>
+
+                    <h3>Delete My Account</h3>
+                    <p>Permanently delete your account and all data</p>
+                    <button class="btn-delete" aria-label="Delete account">Delete Account</button>
+                </div>
+            </section>
+
+            <div class="footer-message">
+                <p>Your data is encrypted and secure. These preferences help MoneyMap recommend smarter strategies.</p>
+            </div>
+        </main>
+    </div>
+    <script src="completed/auth.js"></script>
+    <script src="settings.js"></script>
+</body>
+</html>

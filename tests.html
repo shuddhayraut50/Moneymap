@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save to Database</title>
+</head>
+<body>
+    <h2>Enter Details</h2>
+    <form id="userForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="number">Number:</label>
+        <input type="text" id="number" name="number" required><br><br>
+        <button type="submit">Submit</button>
+    </form>
+    <p id="result"></p>
+    <script>
+        document.getElementById('userForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const number = document.getElementById('number').value;
+            try {
+                const response = await fetch('http://localhost:3001/save', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, number })
+                });
+                const data = await response.json();
+                document.getElementById('result').textContent = data.message;
+            } catch (err) {
+                document.getElementById('result').textContent = 'Error connecting to server.';
+            }
+        });
+    </script>
+</body>
+</html>

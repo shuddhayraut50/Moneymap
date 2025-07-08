@@ -1,0 +1,98 @@
+Initial Imports (Lines 1-6):
+
+Imports data for different investment types from separate modules (stocks, mutual funds, ETFs, REITs, crypto, and FD data)
+Utility Function (Lines 7-30):
+
+createSearchBar: Creates a search functionality for filtering investment options
+Main Function - manualSelection (Lines 32-2151): This is the core function that handles the entire manual selection process. It's divided into several sections:
+
+a) Initial Setup (Lines 32-73):
+
+Gets current allocation
+Initializes remaining amount variables for different asset types
+Sets up purchase summaries tracking
+b) Stocks Section (Lines 75-470):
+
+Handles stock selection if StocksAllocationAmount > 0
+Key functions:
+selectStockList: Selects stocks based on risk level
+renderManualUI: Creates the UI for stock selection
+handleManualInput: Processes user input for stock quantities
+addMultipleOfEach: Bulk stock selection
+updateManualRemaining: Updates remaining balance
+showModal: Displays notifications
+c) Mutual Funds Section (Lines 471-700):
+
+Similar structure to stocks section
+Manages mutual fund selection if MutualFundsAllocationAmount > 0
+Includes functions for UI rendering, input handling, and portfolio display
+d) Gold ETFs Section (Lines 701-950):
+
+Handles ETF selection if GoldETFsAllocationAmount > 0
+Includes bulk purchase options and remaining amount tracking
+e) REITs Section (Lines 951-1200):
+
+Manages REIT investments if reitsallocationamount > 0
+Similar structure to previous sections with specific REIT handling
+f) SGB (Sovereign Gold Bonds) Section (Lines 1201-1300):
+
+Calculates SGB purchases based on price per gram
+Handles maximum limits and remaining amount calculations
+g) PPF (Public Provident Fund) Section (Lines 1301-1400):
+
+Calculates PPF investments over 15 years
+Handles interest calculations and maturity amounts
+h) NSC (National Savings Certificate) Section (Lines 1401-1500):
+
+Similar to PPF but with 5-year term
+Handles NSC-specific interest calculations
+i) Crypto Section (Lines 1501-1800):
+
+Manages cryptocurrency investments
+Includes unit conversion and price calculations
+j) Fixed Deposit Section (Lines 1801-2150):
+
+Handles FD investments across different banks
+Includes interest rate calculations and maturity amount displays
+Export (Line 2153):
+
+Makes the manualSelection function available globally
+Key Features Throughout:
+
+Cascade Logic:
+
+Remaining amounts from one investment type flow into the next
+Each section checks if there's any allocation amount before processing
+UI Components:
+
+Search functionality
+Input validation
+Real-time updates
+Bulk purchase options
+Remaining amount displays
+Error Handling:
+
+Prevents negative quantities
+Handles insufficient funds
+Validates maximum limits
+State Management:
+
+Tracks remaining amounts
+Maintains selected quantities
+Manages locked/unlocked states
+Display Functions:
+
+Shows portfolios
+Displays summaries
+Updates totals and remaining amounts
+The code follows a consistent pattern for each asset type:
+
+Check if allocation exists
+Initialize variables
+Create UI
+Handle user input
+Process selections
+Display results
+Allow editing/finalizing
+Pass remaining amounts to next section
+This is a comprehensive investment management system that allows users to manually allocate their investments across multiple asset classes while maintaining proper fund tracking and validation.

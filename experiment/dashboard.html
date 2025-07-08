@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Top Section: User Info -->
+        <header>
+            <div class="user-info">
+                <div class="welcome">
+                    <h1>Welcome, <span id="user-name">John</span>!</h1>
+                    <p>Account Status: <span id="account-status">Verified</span></p>
+                </div>
+                <div class="profile">
+                    <img id="profile-picture" src="https://via.placeholder.com/100" alt="Profile Picture">
+                    <p id="user-email">john.doe@example.com</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Portfolio Overview Section -->
+        <section class="portfolio-overview">
+            <div class="portfolio-value">
+                <h2>Total Portfolio Value</h2>
+                <p>₹500,000</p>
+                <p class="growth">+5% (Last 30 Days)</p>
+            </div>
+
+            <div class="portfolio-allocation">
+                <h3>Asset Allocation</h3>
+                <canvas id="portfolio-chart"></canvas>
+            </div>
+        </section>
+
+        <!-- Performance Summary -->
+        <section class="performance-summary">
+            <h2>Current Investments</h2>
+            <table id="investments-table">
+                <thead>
+                    <tr>
+                        <th>Asset</th>
+                        <th>Invested</th>
+                        <th>Current Price</th>
+                        <th>ROI</th>
+                        <th>Unrealized Gains</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Recent Activity -->
+        <section class="recent-activity">
+            <h2>Recent Transactions</h2>
+            <div id="transactions">
+                <!-- Data will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <!-- Recommendations & Alerts -->
+        <section class="recommendations">
+            <h2>Personalized Recommendations</h2>
+            <div id="recommendations">
+                <!-- Suggestions will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <footer>
+            <button id="help-center-btn">Help Center</button>
+            <div id="customer-support">
+                <button>Chat with Support</button>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

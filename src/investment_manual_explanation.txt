@@ -1,0 +1,251 @@
+Investment Manual Selection Code Documentation
+=============================================
+
+This document explains the structure and flow of the invetmentselctionManual.js file, which handles manual investment selection across various asset classes.
+
+1. FILE STRUCTURE
+----------------
+The file is organized into distinct sections, each handling a specific asset class:
+- Imports and Utilities
+- Stocks Management
+- Mutual Funds Management 
+- Gold ETFs Management
+- REITs Management
+- SGB (Sovereign Gold Bonds) Management
+- PPF (Public Provident Fund) Management
+- NSC (National Savings Certificates) Management
+- Cryptocurrency Management
+- Fixed Deposits Management
+
+2. DETAILED COMPONENT BREAKDOWN
+-----------------------------
+
+2.1 IMPORTS AND UTILITIES
+------------------------
+File starts by importing data from separate modules:
+- stocks.js: Stock market data
+- mutualFunds.js: Mutual fund options
+- etfs.js: Exchange Traded Funds data
+- reits.js: Real Estate Investment Trusts data
+- crypto.js: Cryptocurrency data
+- fd.js: Fixed Deposit data and interest rate calculator
+
+Utility Functions:
+- createSearchBar(): Creates a search functionality for filtering investment options
+  - Parameters: containerId, optionClass
+  - Features: Real-time filtering of options
+  - Usage: Used across all asset type sections
+
+2.2 STOCKS MANAGEMENT
+--------------------
+Core Functions:
+a) selectStockList()
+   - Purpose: Filters stocks based on risk level (low/medium/high)
+   - Triggers: On initial load and risk level change
+   - Updates: Available stock options
+
+b) renderManualUI()
+   - Purpose: Creates the stock selection interface
+   - Components:
+     * Search bar
+     * Stock options with quantity inputs
+     * Bulk purchase buttons
+     * Remaining amount display
+     * Done button
+
+c) handleManualInput()
+   - Purpose: Processes user input for stock quantities
+   - Validations:
+     * Prevents negative quantities
+     * Checks available funds
+     * Updates remaining amount
+   - Updates UI elements in real-time
+
+d) addMultipleOfEach()
+   - Purpose: Handles bulk stock purchases
+   - Features:
+     * Validates total cost against remaining funds
+     * Updates all selected stocks simultaneously
+     * Recalculates remaining amount
+
+2.3 MUTUAL FUNDS MANAGEMENT
+--------------------------
+Similar structure to stocks section with specific mutual fund handling:
+
+Core Functions:
+a) selectMFList()
+   - Purpose: Filters mutual funds by risk level
+   - Updates: Available mutual fund options
+
+b) renderManualMFUI()
+   - Purpose: Creates mutual fund selection interface
+   - Components:
+     * Search functionality
+     * Fund options with unit inputs
+     * NAV display
+     * Remaining amount tracker
+
+c) handleManualMFInput()
+   - Purpose: Processes mutual fund unit purchases
+   - Features:
+     * NAV-based calculations
+     * Real-time unit conversion
+     * Remaining amount updates
+
+2.4 GOLD ETFs MANAGEMENT
+-----------------------
+Specialized handling for Gold ETF investments:
+
+Core Functions:
+a) updateETFButtonStates()
+   - Purpose: Manages bulk purchase options
+   - Features:
+     * Dynamic button enabling/disabling
+     * Cost calculation for bulk purchases
+
+b) updateETFAffordability()
+   - Purpose: Shows which ETFs are affordable
+   - Features:
+     * Visual indicators
+     * Real-time updates
+
+2.5 REITs MANAGEMENT
+-------------------
+Handles real estate investment trust selections:
+
+Core Functions:
+a) renderManualREITUI()
+   - Purpose: Creates REIT selection interface
+   - Features:
+     * Price per unit display
+     * Investment amount inputs
+     * Total investment tracking
+
+b) handleREITManualDone()
+   - Purpose: Finalizes REIT selections
+   - Features:
+     * Investment summary
+     * Remaining amount calculation
+     * Portfolio display
+
+2.6 SGB MANAGEMENT
+-----------------
+Handles Sovereign Gold Bond investments:
+
+Features:
+- Price per gram calculations
+- Maximum investment limits
+- Maturity value calculations
+- Remaining amount tracking
+
+2.7 PPF MANAGEMENT
+-----------------
+Manages Public Provident Fund investments:
+
+Features:
+- 15-year investment period
+- Interest rate calculations
+- Compound interest computation
+- Maturity amount display
+
+2.8 NSC MANAGEMENT
+-----------------
+Handles National Savings Certificate investments:
+
+Features:
+- 5-year investment period
+- Interest calculations
+- Maturity value computation
+- Investment summary generation
+
+2.9 CRYPTOCURRENCY MANAGEMENT
+---------------------------
+Manages cryptocurrency investments:
+
+Core Functions:
+a) renderManualCryptoUI()
+   - Purpose: Creates crypto investment interface
+   - Features:
+     * Price display
+     * Unit conversion
+     * Investment amount inputs
+
+b) updateCryptoUnitsAndRemaining()
+   - Purpose: Handles real-time updates
+   - Features:
+     * Unit calculation
+     * Remaining amount tracking
+     * Investment validation
+
+2.10 FIXED DEPOSITS MANAGEMENT
+----------------------------
+Handles FD investments across different banks:
+
+Core Functions:
+a) renderManualFDUI()
+   - Purpose: Creates FD selection interface
+   - Features:
+     * Bank-wise options
+     * Interest rate display
+     * Duration selection
+     * Maturity calculation
+
+b) handleFDManualDone()
+   - Purpose: Finalizes FD selections
+   - Features:
+     * Investment summary
+     * Maturity values
+     * Bank-wise breakdown
+
+3. CASCADING INVESTMENT FLOW
+---------------------------
+The system follows a sequential investment flow:
+1. Stocks → Remaining to Mutual Funds
+2. Mutual Funds → Remaining to Gold ETFs
+3. Gold ETFs → Remaining to REITs
+4. REITs → Remaining to SGBs
+5. SGBs → Remaining to PPF
+6. PPF → Remaining to NSC
+7. NSC → Remaining to Crypto
+8. Crypto → Remaining to Fixed Deposits
+
+4. ERROR HANDLING AND VALIDATIONS
+-------------------------------
+Throughout the code, robust error handling is implemented:
+- Input validation for all numerical entries
+- Maximum investment limit checks
+- Insufficient funds validation
+- Real-time balance updates
+- Investment lock mechanisms
+- Unit conversion validations
+
+5. UI/UX FEATURES
+----------------
+The code implements various user interface features:
+- Search functionality for each asset type
+- Real-time updates of remaining amounts
+- Visual affordability indicators
+- Bulk purchase options
+- Edit/Finalize mechanisms
+- Detailed summaries and portfolios
+- Modal notifications for important messages
+
+6. STATE MANAGEMENT
+-----------------
+The code maintains various states:
+- Remaining amounts for each asset type
+- Selected quantities/amounts
+- Locked/Unlocked states for selections
+- User input history
+- Portfolio summaries
+
+7. PERFORMANCE CONSIDERATIONS
+---------------------------
+The code implements several performance optimizations:
+- Efficient DOM updates
+- Cached calculations
+- Optimized event listeners
+- Proper memory management
+- State validation checks
+
+This investment management system provides a comprehensive solution for manual investment allocation across multiple asset classes while maintaining proper fund tracking and validation throughout the investment process.

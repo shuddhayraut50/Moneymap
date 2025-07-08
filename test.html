@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Values</title>
+    <style>
+        body {
+            background: linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .stock-table {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            padding: 36px 48px;
+            min-width: 680px;
+            transition: box-shadow 0.3s;
+            margin-bottom: 24px;
+        }
+        .stock-table:hover {
+            box-shadow: 0 8px 32px rgba(0,0,0,0.16);
+        }
+        .stock-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+            font-size: 1.15rem;
+            border-radius: 8px;
+            padding: 15px;
+            transition: background 0.3s, transform 0.5s, box-shadow 0.5s;
+            background: #f8fafc;
+            position: relative;
+            z-index: 1;
+        }
+        /* Keep animation keyframes as they are, they are functional */
+        .stock-row.animated {
+            animation: pop 0.5s;
+        }
+        .stock-row.move-up {
+            animation: moveUp 0.7s cubic-bezier(0.4,1.4,0.6,1) forwards;
+            z-index: 2;
+        }
+        .stock-row.move-down {
+            animation: moveDown 0.7s cubic-bezier(0.4,1.4,0.6,1) forwards;
+            z-index: 0;
+        }
+        @keyframes moveUp {
+            0% { transform: scale(1) translateY(0) perspective(400px) translateZ(0); box-shadow: 0 0 0 rgba(0,0,0,0); }
+            30% { transform: scale(1.12) translateY(-10px) perspective(400px) translateZ(40px); box-shadow: 0 8px 32px rgba(30,185,84,0.10); }
+            80% { transform: scale(1.04) translateY(-30px) perspective(400px) translateZ(0); }
+            100% { transform: scale(1) translateY(0) perspective(400px) translateZ(0); box-shadow: 0 0 0 rgba(0,0,0,0); }
+        }
+        @keyframes moveDown {
+            0% { transform: scale(1) translateY(0) perspective(400px) translateZ(0); box-shadow: 0 0 0 rgba(0,0,0,0); }
+            30% { transform: scale(0.92) translateY(10px) perspective(400px) translateZ(-40px); box-shadow: 0 2px 8px rgba(229,57,53,0.10); }
+            80% { transform: scale(0.98) translateY(30px) perspective(400px) translateZ(0); }
+            100% { transform: scale(1) translateY(0) perspective(400px) translateZ(0); box-shadow: 0 0 0 rgba(0,0,0,0); }
+        }
+        .stock-name {
+            font-weight: 700;
+            color: #222;
+            width: 110px;
+            letter-spacing: 0.5px;
+        }
+        .stock-original {
+            color: #888;
+            width: 80px;
+            text-align: right;
+        }
+        .stock-current {
+            width: 80px;
+            text-align: right;
+            font-weight: 500;
+        }
+        .stock-change {
+            width: 90px;
+            text-align: right;
+            font-weight: 600;
+            font-size: 1.05em;
+        }
+        .green {
+            color: #1db954;
+        }
+        .red {
+            color: #e53935;
+        }
+        .arrow {
+            font-size: 1.2em;
+            margin-right: 6px;
+        }
+        .time-display {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            padding: 8px 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            font-size: 0.9rem;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="stock-table" id="stocks-table">
+        <h2>Stocks</h2>
+    </div>
+    <div class="stock-table" id="crypto-table">
+        <h2>Crypto</h2>
+    </div>
+    <div class="stock-table" id="etfs-table">
+        <h2>ETFs</h2>
+    </div>
+    <div class="stock-table" id="mutualfunds-table">
+        <h2>Mutual Funds</h2>
+    </div>
+    <div class="stock-table" id="reits-table">
+        <h2>REITs</h2>
+    </div>
+
+    <div style="margin: 32px 0; width: 600px; max-width: 95vw;">
+        <label for="assetTypeSelect">Select Asset Type:</label>
+        <select id="assetTypeSelect">
+            <option value="stocks">Stocks</option>
+            <option value="crypto">Crypto</option>
+            <option value="etfs">ETFs</option>
+            <option value="mutualfunds">Mutual Funds</option>
+            <option value="reits">REITs</option>
+        </select>
+        <label for="assetNameSelect">Select Asset Name:</label>
+        <select id="assetNameSelect"></select>
+        <canvas id="historyChart" height="120"></canvas>
+    </div>
+
+    <div class="time-display" id="timeDisplay">
+        <p></p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ASSET_CONFIGS = [
+            { type: 'stocks', endpoint: 'get-value-stocks', tableId: 'stocks-table' },
+            { type: 'crypto', endpoint: 'get-value-crypto', tableId: 'crypto-table' },
+            { type: 'etfs', endpoint: 'get-value-etfs', tableId: 'etfs-table' },
+            { type: 'mutualfunds', endpoint: 'get-value-mutualfunds', tableId: 'mutualfunds-table' },
+            { type: 'reits', endpoint: 'get-value-reits', tableId: 'reits-table' }
+        ];
+
+        function getCompanyDisplayName(name) {
+            return name.charAt(0).toUpperCase() + name.slice(1);
+        }
+
+        function renderAssetTable(data, tableId) {
+            const companies = Object.keys(data).map(name => {
+                const orig = data[name].original;
+                const curr = data[name].updated;
+                const change = ((curr - orig) / orig) * 100;
+                return { name, orig, curr, change };
+            });
+
+            companies.sort((a, b) => b.change - a.change); // Sort by change percentage
+
+            const table = document.getElementById(tableId);
+            if (!table) return; // Exit if table not found
+
+            // Remove all rows, keeping the heading (first child)
+            while (table.children.length > 1) {
+                table.removeChild(table.lastChild);
+            }
+
+            companies.forEach(comp => {
+                const row = document.createElement('div');
+                row.className = 'stock-row';
+                const changeClass = comp.change > 0 ? 'green' : (comp.change < 0 ? 'red' : '');
+                const arrow = comp.change > 0.01 ? '<span class="arrow green">▲</span>' :
+                              (comp.change < -0.01 ? '<span class="arrow red">▼</span>' : '');
+
+                row.innerHTML = `
+                    <span class="stock-name">${getCompanyDisplayName(comp.name)}</span>
+                    <span class="stock-original">${comp.orig}</span>
+                    <span class="stock-current">${comp.curr.toFixed(2)}</span>
+                    <span class="stock-change ${changeClass}">
+                        ${arrow}${comp.change >= 0 ? '+' : ''}${comp.change.toFixed(2)}%
+                    </span>
+                `;
+                table.appendChild(row);
+            });
+        }
+
+        async function fetchAndUpdateAllAssets() {
+            for (const asset of ASSET_CONFIGS) {
+                try {
+                    const res = await fetch(`http://127.0.0.1:3001/${asset.endpoint}`);
+                    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+                    const data = await res.json();
+                    renderAssetTable(data, asset.tableId);
+                } catch (e) {
+                    console.error(`Failed to fetch ${asset.type} data:`, e);
+                    // Consider a more user-friendly error display here
+                }
+            }
+        }
+
+        // Initial fetch and set interval for updates
+        fetchAndUpdateAllAssets();
+        setInterval(fetchAndUpdateAllAssets, 2000); // Update every 2 seconds
+
+        let historyData = {};
+        let chartInstance = null;
+
+        // Fetch history data and organize by asset name, using datetime as the key
+        async function fetchHistoryData() {
+            try {
+                const assetType = document.getElementById('assetTypeSelect').value || 'crypto';
+                const res = await fetch('http://127.0.0.1:3001/get-history?type=' + assetType);
+                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+                const records = await res.json(); // Array of {type, name, value, datetime}
+                // Group by asset name: { [assetType]: { [name]: [{datetime, value}, ...] } }
+                const grouped = {};
+                for (const rec of records) {
+                    if (!grouped[rec.name]) grouped[rec.name] = [];
+                    grouped[rec.name].push({ datetime: rec.datetime, value: rec.value });
+                }
+                // Sort each asset's history by datetime ascending
+                for (const name in grouped) {
+                    grouped[name].sort((a, b) => new Date(a.datetime) - new Date(b.datetime));
+                }
+                historyData = { [assetType]: grouped };
+                updateAssetNameOptions();
+                drawHistoryChart();
+            } catch (e) {
+                console.error("Failed to fetch history data:", e);
+            }
+        }
+
+        function updateAssetNameOptions() {
+            const assetTypeSelect = document.getElementById('assetTypeSelect');
+            const assetNameSelect = document.getElementById('assetNameSelect');
+            const selectedAssetType = assetTypeSelect.value;
+            const assetNamesForType = historyData[selectedAssetType];
+            assetNameSelect.innerHTML = '';
+            if (!assetNamesForType || Object.keys(assetNamesForType).length === 0) {
+                const opt = document.createElement('option');
+                opt.value = '';
+                opt.textContent = 'No assets available';
+                opt.disabled = true;
+                assetNameSelect.appendChild(opt);
+                return;
+            }
+            Object.keys(assetNamesForType).forEach(name => {
+                const opt = document.createElement('option');
+                opt.value = name;
+                opt.textContent = getCompanyDisplayName(name);
+                assetNameSelect.appendChild(opt);
+            });
+        }
+
+        function drawHistoryChart() {
+            const assetType = document.getElementById('assetTypeSelect').value;
+            const assetName = document.getElementById('assetNameSelect').value;
+            const selectedAssetTypeData = historyData[assetType];
+            if (!selectedAssetTypeData || !assetName) {
+                if (chartInstance) chartInstance.destroy();
+                return;
+            }
+            const historyArr = selectedAssetTypeData[assetName] || [];
+            const labels = historyArr.map(entry => new Date(entry.datetime).toLocaleString());
+            const values = historyArr.map(entry => entry.value);
+            const ctx = document.getElementById('historyChart').getContext('2d');
+            if (chartInstance) chartInstance.destroy();
+            chartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: `${getCompanyDisplayName(assetName)} Value`,
+                        data: values,
+                        borderColor: '#36A2EB',
+                        backgroundColor: 'rgba(54,162,235,0.1)',
+                        fill: true,
+                        tension: 0.2,
+                        pointRadius: 4,
+                        pointHoverRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: true },
+                        title: { display: true, text: `${getCompanyDisplayName(assetName)} Performance (Last ${labels.length} Records)` }
+                    },
+                    scales: {
+                        x: { title: { display: true, text: 'Time' } },
+                        y: { title: { display: true, text: 'Value' }, beginAtZero: false }
+                    }
+                }
+            });
+        }
+
+        // Event listeners for asset type and name selection
+        document.getElementById('assetTypeSelect').addEventListener('change', () => {
+            updateAssetNameOptions();
+            drawHistoryChart();
+        });
+        document.getElementById('assetNameSelect').addEventListener('change', drawHistoryChart);
+
+        // Fetch history data on page load
+        fetchHistoryData();
+
+        // Time display logic
+        function updateTimeDisplay() {
+            const now = new Date();
+            const timeString = now.toLocaleDateString('en-IN', {
+                year: 'numeric', month: 'short', day: 'numeric',
+                hour: '2-digit', minute: '2-digit', second: '2-digit',
+                hour12: true
+            });
+            const timeDisplayElement = document.getElementById('timeDisplay');
+            if (timeDisplayElement) {
+                timeDisplayElement.querySelector('p').textContent = timeString;
+            }
+        }
+        setInterval(updateTimeDisplay, 1000); // Update every second
+        updateTimeDisplay(); // Initial call to display time immediately
+
+        // Remove the script type="module" block as it conflicts with the simple time display
+        // and seems to be an incomplete React-like component setup.
+
+        async function insertHistoryRecord(type, name, value) {
+          const client = new MongoClient(historyMongoUrl);
+          try {
+            await client.connect();
+            const db = client.db(historyDbName);
+            const collection = db.collection(historyCollectionName);
+            const now = new Date().toISOString();
+            await collection.insertOne({ type, name, value, datetime: now });
+          } finally {
+            await client.close();
+          }
+        }
+    </script>
+</body>
+</html>

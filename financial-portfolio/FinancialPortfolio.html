@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Financial Portfolio</title>
+    <link rel="stylesheet" href="FinancialPortfolio.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+    
+</head>
+<body>
+    <div class="portfolio-container">        <header class="portfolio-header">
+            <span class="portfolio-title">Financial Portfolio</span>
+            <div class="header-actions">
+                <button class="refresh-btn" title="Refresh Data">
+                    <span class="refresh-icon">↻</span>
+                </button>
+                <div class="export-dropdown">
+                    <button class="export-btn">Export As</button>
+                    <div class="export-options">
+                        <button class="export-option" data-type="json">JSON</button>
+                        <button class="export-option" data-type="pdf">PDF</button>
+                    </div>
+                </div>
+                <button class="sell-assets-btn">Sell Assets</button>
+                <button class="logout-btn" id="logout-btn" style="display:none;">Log Out</button>
+            </div>
+        </header>
+
+        <section class="portfolio-summary-card">            <h2>Portfolio Summary</h2>
+            <p class="portfolio-summary-desc">Overview of your investment portfolio</p>
+            <div class="portfolio-summary-grid">
+                <div class="summary-item">
+                    <span class="summary-label">Total Investments</span>
+                    <span class="summary-value" id="summary-total-investments">--</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">Portfolio Value</span>
+                    <span class="summary-value" id="summary-portfolio-value">--</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">Total Invested</span>
+                    <span class="summary-value" id="summary-total-invested">--</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">Total Profit/Loss</span>
+                    <div class="profit-container">
+                        <span class="summary-value profit" id="summary-total-profit">--</span>
+                        <span class="profit-percent" id="summary-profit-percent"></span>
+                    </div>
+                </div>
+            </div>
+        </section>        <div class="portfolio-controls">            <nav class="portfolio-tabs">
+                <ul>
+                    <!-- Tabs will be dynamically generated -->
+                </ul>
+            </nav>
+            <div class="sort-container">
+                <select id="sortOptions" class="sort-dropdown">
+                    <option value="default">Sort by</option>
+                    <option value="name-asc">Name (A-Z)</option>
+                    <option value="name-desc">Name (Z-A)</option>
+                    <option value="value-high">Value (High to Low)</option>
+                    <option value="value-low">Value (Low to High)</option>
+                    <option value="profit-high">Profit (High to Low)</option>
+                    <option value="profit-low">Profit (Low to High)</option>
+                    <option value="roi-high">ROI % (High to Low)</option>
+                    <option value="roi-low">ROI % (Low to High)</option>
+                </select>
+            </div>
+        </div>
+
+        <section class="portfolio-cards" id="portfolio-cards">
+            <!-- Cards will be rendered by JS -->
+        </section>    </div>
+    <script src="../completed/auth.js"></script>
+    <script src="FinancialPortfolio.js"></script>
+</body>
+</html>
